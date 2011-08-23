@@ -1,0 +1,104 @@
+{#
+    tanka/layout.html
+    ~~~~~~~~~~~~~~~~~
+
+    Sphinx layout template for the tanka theme.
+
+    :copyright: Copyright 2007-2011 by the Sphinx team, see AUTHORS.
+    :license: BSD, see LICENSE for details.
+#}
+{% extends "basic/layout.html" %}
+{% set script_files = script_files + ['_static/theme_extras.js'] %}
+{% set css_files = css_files + ['_static/print.css'] %}
+
+{% macro nav() -%}
+        <p>
+        {%- if prev -%}
+        «&#160;&#160;<a href="{{ prev.link|e }}">{{ prev.title }}</a>
+        &#160;&#160;::&#160;&#160;
+        {%- endif -%}
+        <a class="uplink" href="{{ pathto(master_doc) }}">{{ _('Contents') }}</a>
+        {%- if next -%}
+        &#160;&#160;::&#160;&#160;
+        <a href="{{ next.link|e }}">{{ next.title }}</a>&#160;&#160;»
+        {%- endif -%}
+        </p>
+{%- endmacro %}
+
+{%- macro sidebar() -%}
+      {%- if render_sidebar %}
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+          {%- block sidebarlogo %}
+          {%- if logo %}
+            <p class="logo"><a href="{{ pathto(master_doc) }}">
+              <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
+            </a></p>
+          {%- endif %}
+          {%- endblock %}
+          {%- if sidebars != None %}
+            {#- new style sidebar: explicitly include/exclude templates #}
+            {%- for sidebartemplate in sidebars %}
+                {%- include sidebartemplate %}
+            {%- endfor %}
+          {%- else %}
+            {#- old style sidebars: using blocks -- should be deprecated #}
+            {%- block sidebartoc %}
+            {%- include "localtoc.html" %}
+            {%- endblock %}
+            {%- block sidebarrel %}
+            {%- include "relations.html" %}
+            {%- endblock %}
+            {%- block sidebarsourcelink %}
+            {%- include "sourcelink.html" %}
+            {%- endblock %}
+            {%- if customsidebar %}
+            {%- include customsidebar %}
+            {%- endif %}
+            {%- block sidebarsearch %}
+            {%- include "searchbox.html" %}
+            {%- endblock %}
+          {%- endif %}
+        </div>
+      </div>
+      {%- endif %}
+{%- endmacro %}
+
+{% block header -%}
+      <div class="header">
+        {%- if theme_full_logo != "false" %}
+        <a href="{{ pathto('index') }}">
+          <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
+        </a>
+        {%- else %}
+        {%- if logo -%}
+          <img class="rightlogo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
+        {%- endif -%}
+        <div class="search">{% include "google_cse.htm" %}</div>
+        <p class="heading"><a href="{{ pathto('index') }}">
+          <span>{{ shorttitle|e }}</span></a></p>
+        <h2 class="heading"><span>{{ title|striptags|e }}</span></h2>
+        {%- endif %}
+      </div>
+{%- endblock header %}
+
+{% block relbar1 -%}
+      <div class="topnav">
+      {{ nav() }}
+      </div>
+{%- endblock %}
+
+{% block document -%}
+      <div class="content">
+        {% block body %}{% endblock %}
+        {% block contentfooter -%}
+        <div class="contentfooter">{% include "adsense-468x60.html" %} </div>
+        {%- endblock %}
+      </div>
+{% endblock %}
+
+{% block relbar2 -%}
+      <div class="bottomnav">
+      {{ nav() }}
+      </div>
+{%- endblock %}
