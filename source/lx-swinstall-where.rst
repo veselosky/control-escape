@@ -24,7 +24,7 @@ On the other hand, if you were installing a server or a command line utility,
 you probably will not find it in your menu no matter how hard you look. So
 let's take a quick tour to find out where files live on your Linux system.
 (You may first want to read about the `Linux Virtual File System
-<intro-filesystem>`:doc: for some background.)
+<lx-filesys>`:doc: for some background.)
 
 User Programs (binaries)
 ********************************************************************************

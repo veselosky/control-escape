@@ -9,7 +9,7 @@ Part One — Introduction to Linux
 .. toctree::
 
     bootstrap
-    intro-filesystem
+    lx-filesys
     cli-basics
     users-groups
     lx-swinstall

@@ -198,7 +198,7 @@ Here are some major points you need to know:
 
 Some other major differences require deeper explanations:
 
-* `The Linux (Virtual) File System <intro-filesystem>`:doc:
+* `The Linux (Virtual) File System <lx-filesys>`:doc:
 
 .. _linux-bootstrap-quick-reference:
 

@@ -98,7 +98,7 @@ root (/)
 
 The *root* file system is represented by a forward slash (/). It is the top of
 the directory tree, and contains Linux and everything that you install with
-Linux.  (See  `The Linux (Virtual) File System <intro-filesystem>`:doc: for
+Linux.  (See  `The Linux (Virtual) File System <lx-filesys>`:doc: for
 details). This is roughly equivalent to your "C:\" drive under DOS or Windows.
 You *must* create a partition for the root directory. (Don't confuse this with
 the "root" user account, who is the administrator of the system. That's a
