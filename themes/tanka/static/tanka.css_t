@@ -235,6 +235,10 @@ div.admonition {
     margin-bottom: 15px;
     margin-top: 15px;
 }
+.admonition-title {
+    font-size: 1.2em;
+    font-weight:bold;
+}
 div.note {
     padding: 10px 15px 10px 80px;
     background: #e4ffde url(alert_info_32.png) 15px 15px no-repeat;
