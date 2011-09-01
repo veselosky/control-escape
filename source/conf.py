@@ -143,6 +143,7 @@ html_sidebars = {
 html_additional_pages = {
     'searchresults': 'searchresults.html',
     'books/index': 'books/index.html',
+    'index': 'index.html',
     }
 
 # If false, no module index is generated.
