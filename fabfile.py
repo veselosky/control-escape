@@ -16,6 +16,8 @@ def build():
     """Build the site"""
     target = env['otto.web.build_dir']
     local('rm -rf build/*') # make clean
-    local('sphinx-build -n -d build/doctrees -b html source %s/htdocs' % target)
+    local('sphinx-build -n -d build/doctrees -b html source %s/htdocs/linux' % target)
+    local('mkdir -p %s/htdocs/web' % target)
+    local('mv %s/htdocs/linux/configuring-apache2-debian.html %s/htdocs/web/' % (target, target))
     local('cp -a etc %s/' % target)
 
