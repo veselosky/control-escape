@@ -157,8 +157,7 @@ their mirrors for one close to you to save bandwidth on their server.
 Similarities Between Linux and DOS
 ********************************************************************************
 
-Comparing DOS & Windows to
-Linux
+Comparing DOS & Windows to Linux
 --------------------------------------------------------------------------------
 Despite what some folks will tell you, there is a lot of superficial
 similarity between DOS and Linux, and also between MS Windows and the X Window
