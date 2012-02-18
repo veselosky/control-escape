@@ -135,6 +135,8 @@ html_static_path = ['_static']
 
 # Custom sidebar templates, maps document names to template names.
 html_sidebars = {
+    '*': ['localtoc.html', 'adsense-120x600.html', 'amazon-120x240-omakase.html'],
+    'searchresults': None,
     'linux/*': ['localtoc.html', 'adsense-120x600.html', 'amazon-120x240-omakase.html'],
     'web/*': ['localtoc.html', 'adsense-120x600.html', 'amazon-120x240-omakase.html'],
 }
