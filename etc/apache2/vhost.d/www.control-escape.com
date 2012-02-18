@@ -50,7 +50,7 @@ Redirect permanent /lx-swinstall.html http://www.control-escape.com/linux/lx-swi
 Redirect permanent /lx-x.html http://www.control-escape.com/linux/lx-x.html
 Redirect permanent /x.html http://www.control-escape.com/linux/x.html
 
-# Changed with Sphinx conversion, 2011
+# Changed with Sphinx conversion, 2012
 Redirect permanent /lx-reading.html http://www.control-escape.com/linux/bootstrap.html
 Redirect permanent /linux/lx-reading.html http://www.control-escape.com/linux/bootstrap.html
 Redirect permanent /lx-basics.html http://www.control-escape.com/linux/bootstrap.html
@@ -74,8 +74,5 @@ Redirect permanent /lx-makeroom.html http://www.control-escape.com/linux/lx-part
 Redirect permanent /linux/lx-makeroom.html http://www.control-escape.com/linux/lx-partition.html
 Redirect permanent /lx-shell.html http://www.control-escape.com/linux/cli-basics.html
 Redirect permanent /linux/lx-shell.html http://www.control-escape.com/linux/cli-basics.html
-
-# FIXME For new Sphinx version
-# Redirect permanent /lx-internet.html http://www.control-escape.com/linux/lx-internet.html
 
 </VirtualHost>
