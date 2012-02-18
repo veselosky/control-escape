@@ -13,7 +13,7 @@
     lilo-cfg
     lx-install
     lx-samba
-    configuring-apache2-debian
+    ../web/configuring-apache2-debian
 
 .. level 3: System Administration for the solo administrator
 
