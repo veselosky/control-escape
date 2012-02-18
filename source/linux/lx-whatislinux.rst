@@ -70,19 +70,18 @@ and most widely supported Linux distributions. Visit their web sites to get a
 feel for the kind of spin they put on their product.
 
 * `Ubuntu <http://www.ubuntu.com>`_ - Recommended for new users.
-* `Mandriva Linux <http://www.mandriva.com>`_ - an excellent desktop, also good for new users.
-* `Fedora Core <http://fedora.redhat.com>`_ - Red Hat's popular "free" Linux distro.
-* `Debian GNU/Linux <http://www.debian.org>`_ - This is on my servers.
+* `Fedora <http://fedoraproject.org>`_ - an excellent desktop, also good for new users..
+* `Debian GNU/Linux <http://www.debian.org>`_ - Very strict about the "freeness" of the distro.
 * `Slackware Linux <http://www.slackware.com>`_ - Old school.
-* `Linspire Destop Linux <http://www.linspire.com/>`_ - Commercial desktop distro
-* `Xandros Linux OS <http://www.xandros.com/>`_ - Commercial desktop distro
-* `Novell SUSE Linux <http://www.novell.com/linux/suse/>`_ - Corporate/Enterprise
+* `SUSE Linux <http://www.suse.com/>`_ - Corporate/Enterprise
 * `Red Hat Enterprise Linux <http://www.redhat.com>`_ - Corporate/Enterprise
 
-Note that SUSE (now owned by Novell) and Red Hat as companies have chosen to
+Note that SUSE and Red Hat as companies have chosen to
 focus on the "Enterprise market". As a result, their software and support
 services are targeted toward large businesses, to the detriment of the home
-user and hobbyist (in my humble opinion).
+user and hobbyist (in my humble opinion). Fedora is a community-friendly
+work-alike if you're looking for something closely compatible with the
+enterprise versions.
 
 Internet Download
 ********************************************************************************
@@ -127,8 +126,7 @@ dollars (or euros or whatever) to have it delivered to your door. It also
 makes installation far more convenient to have a CD-ROM.
 
 You can try ordering at
-`LinuxCentral <http://www.linuxcentral.com>`_ or
-`Cheapbytes <http://www.cheapbytes.com>`_.
+`LinuxCentral <http://www.linuxcentral.com>`_.
 
 Official Boxed Linux Distributions
 --------------------------------------------------------------------------------

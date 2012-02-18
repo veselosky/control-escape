@@ -6,7 +6,6 @@
 
 Partitions: Planning Your Linux Installation
 ================================================================================
-.. contents::
 
 This article will explain some of the terms involved with partitioning your
 hard drive, as well as some concepts you will need to understand before

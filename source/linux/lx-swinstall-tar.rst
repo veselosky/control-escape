@@ -4,7 +4,7 @@
 :Contact: vince@control-escape.com
 :Date: 2011-06-03T22:48:43-0400
 
-Compiling Linux Software from Source Code - Control-Escape
+Compiling Linux Software from Source Code
 ================================================================================
 A computer program is a list of instructions given to a computer to make it
 perform a specific task or series of tasks. Computers do not understand
@@ -48,7 +48,7 @@ will help fill in some of the blanks.
 A Quick Example
 ********************************************************************************
 
-A typical incantation to install a source package looks something like this.
+A typical incantation to install a source package looks something like this. ::
 
     [root]# tar -xzvf ${name}.tar.gz
     Unpacking ...
@@ -61,6 +61,8 @@ A typical incantation to install a source package looks something like this.
 
 Unpacking the Archive
 ********************************************************************************
+::
+
     [user]$ tar -xzvf ${filename}.tar.gz
     [user]$ tar -xjvf ${filename}.tar.bz2
     [user]$ tar -xvf ${filename}.tar
@@ -93,7 +95,7 @@ only fonts or documentation, and those should be okay.
 Configuring
 ********************************************************************************
 
-The typical steps to configure and install software are these.
+The typical steps to configure and install software are these. ::
 
     [root]# ./configure --help
     [root]# ./configure
@@ -128,6 +130,8 @@ name).
 
 Compiling, Installing and Uninstalling
 ********************************************************************************
+::
+
     [root]# make
     [root]# make install
     [root]# make uninstall
@@ -156,4 +160,3 @@ libraries that the software depends on. Every case is unique, but watch for
 the "development" versions of the libraries it needs. These are usually
 available from your operating system vendor packages. Search for packages with
 names ending in "-devel".
-

@@ -18,8 +18,7 @@ to need to learn the basics, because sometimes you just *have* to use it. On
 the other hand, if you enjoy working at a command line, then you may end up
 *loving* ``vi``.
 
-Lesson 1: How to
-Quit
+Lesson 1: How to Quit vi
 *******************************************************************************
 Since ``vi`` is the default editor, there's a good chance you got dropped into
 it without knowing it. This can be *extremely* frustrating if you don't know

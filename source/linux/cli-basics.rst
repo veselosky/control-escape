@@ -13,7 +13,8 @@ The "shell" is another name for the command shell or command interpreter. This
 is the program that gives you a command prompt, accepts the commands you type
 there, and basically makes the computer do what you tell it to. In DOS the
 program that did this was command.com (unless you were a real technogeek and
-used 4dos or something). In Linux, the shell is the first program that starts
+used `4dos <http://en.wikipedia.org/wiki/4DOS>`_ or something). In Linux, the
+shell is the first program that starts
 when you log in, and it keeps running until you log out, waiting to do your
 bidding. Linux is able to use any of several different shells, but the default
 Linux shell is called bash and is the only one I will discuss.
