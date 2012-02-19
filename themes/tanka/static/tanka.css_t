@@ -146,12 +146,8 @@ dt:hover > a.headerlink {
 }
 .header .search {
     float:right;
+    width: 280px;
 }
-.search form {
-    margin: -5px 0 0 0;
-    padding: 0 20px 20px 0;
-}
-
 
 .title {
     font-size: 1.3em;
