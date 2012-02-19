@@ -147,6 +147,7 @@ html_additional_pages = {
     'searchresults': 'searchresults.html',
     'books/index': 'books/index.html',
     'index': 'index.html',
+    'googlef5cd35430da85111': 'google-webmaster-verify.html',
     }
 
 # If false, no module index is generated.
