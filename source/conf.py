@@ -144,7 +144,7 @@ html_sidebars = {
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
 html_additional_pages = {
-    'searchresults': 'searchresults.html',
+    'cseresults': 'searchresults.html',
     'books/index': 'books/index.html',
     'index': 'index.html',
     'googlef5cd35430da85111': 'google-webmaster-verify.html',
