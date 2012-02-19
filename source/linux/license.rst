@@ -1,11 +1,11 @@
 Control-Escape Copyright License
 ==============================================================================
-Unless otherwise noted, all textual material on this web site is ©Copyright
-1998-2011 by Vincent Veselosky, and is licensed under the `Creative Commons
-Attribution-Share Alike 2.5 License
-<http://creativecommons.org/licenses/by-sa/2.5/>`_.
+Unless otherwise noted, all textual material on this web site is Copyright 
+©1998-2012 by Vincent Veselosky, and is licensed under the `Creative Commons
+Attribution-ShareAlike 3.0 Unported License
+<http://creativecommons.org/licenses/by-sa/3.0/>`_.
 
-Some of the articles provided by Control-Escape were authored elsewhere. These
+Some of the articles provided by Control-Escape may have been authored elsewhere. These
 articles will carry their own copyright notice and license terms separate from
 that described in the site footer or this page. Please respect the original
 author's copyright license in any case.
@@ -27,7 +27,7 @@ conditions set forth in the `Open Publication License, v1.0
 <http://opencontent.org/openpub/>`_. If you obtained a copy of this material
 under that license prior to October 2006, you may continue to use it under
 those terms. However, newer versions of Control-Escape content are licensed
-under the terms described above.
+under the Creative Commons terms described above.
 
 If you have any questions regarding use of this material that are not answered
 here, please feel free to contact the publisher via email at
