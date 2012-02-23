@@ -51,6 +51,8 @@ Redirect permanent /lx-x.html http://www.control-escape.com/linux/lx-x.html
 Redirect permanent /x.html http://www.control-escape.com/linux/x.html
 
 # Changed with Sphinx conversion, 2012
+Redirect permanent /bootload.html http://www.control-escape.com/linux/bootload.html
+Redirect permanent /wp8.html http://www.control-escape.com/linux/wp8.html
 Redirect permanent /lx-reading.html http://www.control-escape.com/linux/bootstrap.html
 Redirect permanent /linux/lx-reading.html http://www.control-escape.com/linux/bootstrap.html
 Redirect permanent /lx-basics.html http://www.control-escape.com/linux/bootstrap.html
