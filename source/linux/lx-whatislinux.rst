@@ -157,7 +157,7 @@ inside and save some time.
 
 We recommend `The Official Ubuntu Book`_
 for beginners. If you're not sold on that, you might want to browse through
-our `Linux book store <books/index.html>`_ to find some other books with
+our `Linux book store <../books/index.html>`_ to find some other books with
 CDROM's. New books and new Linux distributions are arriving more quickly than
 we can update our list, so you may also want to check the `Linux Section on
 Amazon.com
