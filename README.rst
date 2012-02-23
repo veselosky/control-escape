@@ -1,7 +1,10 @@
+What's this?
+============
+The Control-escape.com project source.
+
 TODO
 ==================
-
-* DONE: Finish mapping URLs from old .htaccess
-* DONE: Template: /books/index.html
-* DONE: Template: index.html
-* DONE: build task to move configuring-apache2
+* Experiment with different ad placements and sizes.
+    - Use 160x600 adsense in right rail.
+    - Custom Amazon search widget for each page.
+    
