@@ -11,7 +11,7 @@ Redirect permanent / http://www.control-escape.com/
 #=====================================================================
 <VirtualHost *:80>
 ServerName stage.control-escape.com
-DocumentRoot /usr/local/share/apache2/sites/www.control-escape.com/staged/htdocs
+DocumentRoot /home/vince/websites/sites/www.control-escape.com/staged/htdocs
 # Conditional ENV for SSI magics
 BrowserMatchNoCase MSIE MSIE
 BrowserMatchNoCase Windows WINDOWS
@@ -23,7 +23,7 @@ AddHandler server-parsed .htm .html
 #=====================================================================
 <VirtualHost *:80>
 ServerName www.control-escape.com
-DocumentRoot /usr/local/share/apache2/sites/www.control-escape.com/current/htdocs
+DocumentRoot /home/vince/websites/sites/www.control-escape.com/current/htdocs
 
 # Conditional ENV for SSI magics
 BrowserMatchNoCase MSIE MSIE
