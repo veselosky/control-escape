@@ -7,23 +7,18 @@ Redirect permanent / http://www.control-escape.com/
 </VirtualHost>
 
 #=====================================================================
-# Domain for staging server, for testing before it goes live.
-#=====================================================================
-<VirtualHost *:80>
-ServerName stage.control-escape.com
-DocumentRoot /home/vince/websites/sites/www.control-escape.com/staged/htdocs
-# Conditional ENV for SSI magics
-BrowserMatchNoCase MSIE MSIE
-BrowserMatchNoCase Windows WINDOWS
-AddHandler server-parsed .htm .html
-</VirtualHost>
-
-#=====================================================================
 # MAIN DOMAIN
 #=====================================================================
 <VirtualHost *:80>
-ServerName www.control-escape.com
-DocumentRoot /home/vince/websites/sites/www.control-escape.com/current/htdocs
+ServerName {{ domain }}
+DocumentRoot {{ website_root}}/{{ domain }}/htdocs
+
+<Directory {{ website_root }}/{{ domain }}/htdocs>
+    Options Includes FollowSymLinks
+    AllowOverride All
+    # Replaces Allow/Deny from earlier Apaches
+    Require all granted
+</Directory>
 
 # Conditional ENV for SSI magics
 BrowserMatchNoCase MSIE MSIE

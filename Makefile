@@ -38,16 +38,19 @@ clean:
 
 html:
 	$(SPHINXBUILD) -n -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	mv $(BUILDDIR)/html/_static/favicon.ico $(BUILDDIR)/html/favicon.ico
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
+	mv $(BUILDDIR)/html/_static/favicon.ico $(BUILDDIR)/html/favicon.ico
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/dirhtml."
 
 singlehtml:
 	$(SPHINXBUILD) -b singlehtml $(ALLSPHINXOPTS) $(BUILDDIR)/singlehtml
+	mv $(BUILDDIR)/html/_static/favicon.ico $(BUILDDIR)/html/favicon.ico
 	@echo
 	@echo "Build finished. The HTML page is in $(BUILDDIR)/singlehtml."
 
