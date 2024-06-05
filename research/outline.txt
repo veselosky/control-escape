@@ -1,0 +1,130 @@
+
+CONTROL-ESCAPE:
+Part III: Everyday Linux
+    Accessing CDs and Floppies from Linux
+    Getting on the Internet
+    Introducing XEmacs
+Part IV: Maintaining your Linux system
+    Installing Software on Linux
+    Configuring LILO, the Linux Loader
+    Networking Windows and Linux
+    Configuring Apache 2 on Debian, Ubuntu
+
+SLACKBOOK:
+4 System Configuration
+    4.1 System Overview
+    4.1.1 File System Layout
+    4.1.2 Finding Files
+    4.1.3 The /etc/rc.d Directory
+5 Network Configuration
+    5.1 Introduction: netconfig is your friend.
+    5.2 Network Hardware Configuration
+        5.2.1 Loading Network Modules
+        5.2.2 LAN (10/100/1000Base-T and Base-2) cards
+        5.2.3 Modems
+        5.2.4 PCMCIA
+    5.3 TCP/IP Configuration
+        5.3.1 DHCP
+        5.3.2 Static IP
+        5.3.3 /etc/rc.d/rc.inet1.conf
+        5.3.4 /etc/resolv.conf
+        5.3.5 /etc/hosts
+    5.4 PPP
+        5.4.1 pppsetup
+        5.4.2 /etc/ppp
+    5.5 Wireless
+        5.5.1 Hardware Support
+        5.5.2 Configure the Wireless Settings
+        5.5.3 Configure the Network
+    5.6 Network File Systems
+        5.6.1 SMB/Samba/CIFS
+        5.6.2 Network File System (NFS)
+7 Booting
+    7.1 LILO
+    7.2 LOADLIN
+    7.3 Dual Booting
+8 The Shell
+    8.1 Users
+    8.1.1 Logging In
+    8.1.2 Root: The Superuser
+    8.2 The Command Line
+    8.2.1 Running Programs
+    8.2.2 Wildcard Matching
+    8.2.3 Input/Output Redirection and Piping
+    8.3 The Bourne Again Shell (bash)
+    8.3.1 Environment Variables
+    8.3.2 Tab Completion
+    8.4 Virtual Terminals
+    8.4.1 Screen
+9 Filesystem Structure
+    9.1 Ownership
+    9.2 Permissions
+    9.3 Links
+    9.4 Mounting Devices
+    9.4.1 fstab
+    9.4.2 mount and umount
+    9.5 NFS Mounts
+10 Handling Files and Directories
+    10.1 Navigation : ls, cd, and pwd
+    10.2 Pagers: more, less, and most
+    10.3 Simple Output: cat and echo
+    10.4 Creation: touch and mkdir
+    10.5 Copy and Move
+    10.6 Deletion: rm and rmdir
+    10.7 Aliasing files with ln
+11 Process Control
+    11.1 Backgrounding
+    11.2 Foregrounding
+    11.3 ps
+    11.4 kill
+    11.5 top
+13 Basic Network Commands
+    13.1 ping
+    13.2 traceroute
+    13.3 DNS Tools: host, nslookup, dig
+    13.4 finger
+    13.5 telnet
+    13.6 The Secure shell
+    13.7 email: pine, elm, mutt, nail
+    13.8 Browsers: lynx, links, wget
+    13.9 FTP Clients
+    13.10 Talking to Other People: wall, talk, ytalk
+14 Security
+    14.1 Disabling Services
+    14.1.1 Services started from inetd
+    14.1.2 Services started from init scripts
+    14.2 Host Access Control
+    14.2.1 iptables
+    14.2.2 tcpwrappers
+    14.3 Keeping Current
+    14.3.1 slackware-security mailing list
+    14.3.2 The /patches directory
+15 Archive Files
+    15.1 gzip
+    15.2 bzip2
+    15.3 tar
+    15.4 zip
+16 Vi
+17 Emacs
+Glossary
+
+ACCIDENTAL ADMINISTRATOR TOPICS:
+User accounts
+Login/Logout
+su
+Directory Hierarchy
+Starting & Stopping services
+Common shell commands
+vi
+emacs
+The Boot process (bootloader, init, runlevels)
+    Controlling it
+    shutdowns & reboots
+User and group admin
+Mounts
+FS permissions
+Networking
+Cron
+NFS
+
+
