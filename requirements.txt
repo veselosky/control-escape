@@ -1,8 +1,0 @@
-Fabric >= 1.2.0
-Jinja2 >= 2.5.5
-Pygments >= 1.4
-Sphinx >= 1.0.7
-docutils >= 0.7
-python-dateutil >= 1.5, < 2.0
-
-https://github.com/veselosky/otto-webber/tarball/v0.4.1
