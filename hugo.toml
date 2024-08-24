@@ -12,7 +12,7 @@ enableRobotsTXT = true
 uglyURLs = true        # Generate .html pages rather than directories
 
 [permalinks]
-articles = "/:sections/"
+articles = "/:sections/:filename"
 
 # [languages]
 # [languages.en]
@@ -40,7 +40,7 @@ description = "Helping tiny teams produce big projects fast with Python and Djan
 background_color_class = "bg-black"
 recent_posts_number = 15
 # This is a pain, but to aggregate the recent posts from all sections, you have to list them here.
-mainSections = ["linux", "web", "django"]
+mainSections = ["django", "linux", "web"]
 # This is the title of the section that will be displayed on the home page. Set manually,
 # otherwise the default is the first section in the list above.
 recent_copy = "Recent Articles"
