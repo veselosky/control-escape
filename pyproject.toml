@@ -1,0 +1,39 @@
+[project]
+name = "control-escape"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django>=5.1",
+    "django-environ>=0.11.2",
+    "django-extensions>=3.2.3",
+    "docutils>=0.21.2",
+    "pillow>=10.4.0",
+    "rich>=13.7.1",
+]
+
+[project.optional-dependencies]
+prod = ["gunicorn>=23.0.0", "setproctitle>=1.3.3"]
+
+[build-system]
+# With setuptools-scm, package data files (e.g. templates) that are tracked by git will
+# be automatically detected and included. Without setuptools-scm, you would need to
+# specify a file pattern in MANIFEST.in to collect them.
+requires = ["setuptools>=66.1.1", "setuptools-scm>=7.0.5", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["ce"]
+
+[tool.setuptools.dynamic.version]
+attr = "ce.__version__"
+
+[tool.uv]
+dev-dependencies = [
+    "django-debug-toolbar>=4.4.6",
+    "djlint>=1.34.1",
+    "pytest>=8.3.2",
+    "pytest-django>=4.8.0",
+    "ipython>=8.26.0",
+]

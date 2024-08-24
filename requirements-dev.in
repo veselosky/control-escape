@@ -1,4 +1,0 @@
--r requirements.in
-django-debug-toolbar >= 4.0.0
-djlint >= 1.34.1
-ipython >= 8.12
