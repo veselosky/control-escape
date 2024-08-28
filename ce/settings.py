@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import importlib
 from pathlib import Path
 
+import commoncontent.apps
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,12 +32,14 @@ WSGI_APPLICATION = f"{PROJECT}.wsgi.application"
 ROOT_URLCONF = f"{PROJECT}.urls"
 
 INSTALLED_APPS = [
+    *commoncontent.apps.CONTENT,
     "django.contrib.admin",
     "django.contrib.admindocs",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.redirects",
     "django.contrib.sites",
     "django.contrib.staticfiles",
     "sitevars",
@@ -50,6 +53,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
+    "commoncontent.redirects.TemporaryRedirectFallbackMiddleware",
 ]
 TEMPLATES = [
     {
@@ -64,12 +68,13 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "django.template.context_processors.media",
                 "django.template.context_processors.static",
+                "commoncontent.apps.context_defaults",
                 "sitevars.context_processors.inject_sitevars",
             ],
         },
     },
 ]
-
+TINYMCE_DEFAULT_CONFIG = commoncontent.apps.TINYMCE_CONFIG
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 LANGUAGE_CODE = "en-us"

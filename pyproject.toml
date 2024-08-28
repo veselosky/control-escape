@@ -8,10 +8,11 @@ dependencies = [
     "django>=5.1",
     "django-environ>=0.11.2",
     "django-extensions>=3.2.3",
+    "django-commoncontent>=0.3.0",
+    "django-sitevars>=1.0.2",
     "docutils>=0.21.2",
     "pillow>=10.4.0",
     "rich>=13.7.1",
-    "django-sitevars>=1.0.2",
 ]
 
 [project.optional-dependencies]
@@ -38,3 +39,6 @@ dev-dependencies = [
     "pytest-django>=4.8.0",
     "ipython>=8.26.0",
 ]
+
+[tool.uv.sources]
+django-commoncontent = { path = "../django-commoncontent", editable = true }
