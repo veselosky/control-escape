@@ -154,12 +154,23 @@ STORAGES = {
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# Using SQLite in production! Note, these options only work in Django 5.1+
+# https://kerkour.com/sqlite-for-servers
 DB_DIR = DATA_DIR / "db"
 DB_DIR.mkdir(parents=True, exist_ok=True)
 SQLITE_DB = DB_DIR / "db.sqlite3"
+SQLITE_PRAGMAS = """PRAGMA journal_mode = WAL;
+PRAGMA busy_timeout = 5000;
+PRAGMA synchronous = NORMAL;
+PRAGMA cache_size = 1000000000;
+PRAGMA foreign_keys = true;
+PRAGMA temp_store = memory;"""
+SQLITE_OPTIONS = {
+    "transaction_mode": "immediate",
+    "init_command": SQLITE_PRAGMAS,
+}
 DATABASES = {"default": env.db("DATABASE_URL", default=f"sqlite:///{SQLITE_DB}")}
-# TODO tweak performance settings for SQLite and pooling for Postgres
-
+DATABASES["default"]["OPTIONS"] = SQLITE_OPTIONS
 
 CACHES = {"default": env.cache("CACHE_URL", default="locmemcache://")}
 
