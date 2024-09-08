@@ -41,4 +41,4 @@ dev-dependencies = [
 ]
 
 [tool.uv.sources]
-django-commoncontent = { path = "../django-commoncontent", editable = true }
+# django-commoncontent = { path = "../django-commoncontent", editable = true }

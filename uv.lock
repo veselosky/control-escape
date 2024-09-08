@@ -109,7 +109,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "django", specifier = ">=5.1" },
-    { name = "django-commoncontent", editable = "../django-commoncontent" },
+    { name = "django-commoncontent", specifier = ">=0.3.0" },
     { name = "django-environ", specifier = ">=0.11.2" },
     { name = "django-extensions", specifier = ">=3.2.3" },
     { name = "django-sitevars", specifier = ">=1.0.2" },
@@ -201,7 +201,7 @@ wheels = [
 [[package]]
 name = "django-commoncontent"
 version = "0.3.0"
-source = { editable = "../django-commoncontent" }
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django" },
     { name = "django-bootstrap-icons" },
@@ -214,43 +214,9 @@ dependencies = [
     { name = "python-dateutil" },
     { name = "pyyaml" },
 ]
-
-[package.metadata]
-requires-dist = [
-    { name = "django", specifier = "<5.3,>=4.2" },
-    { name = "django-bootstrap-icons", specifier = ">=0.7.8" },
-    { name = "django-debug-toolbar", marker = "extra == 'dev'", specifier = ">=4.4.6" },
-    { name = "django-environ", marker = "extra == 'dev'", specifier = ">=0.11.2" },
-    { name = "django-extensions", marker = "extra == 'dev'", specifier = ">=3.2.3" },
-    { name = "django-imagekit", specifier = ">=5.0.0" },
-    { name = "django-sitevars", specifier = ">=1.0.2" },
-    { name = "django-taggit", specifier = ">=5.0.0" },
-    { name = "django-tinymce", marker = "extra == 'dev'", specifier = ">=4.1.0" },
-    { name = "djlint", marker = "extra == 'dev'", specifier = ">=1.34.1" },
-    { name = "docutils", marker = "extra == 'dev'", specifier = ">=0.20.1" },
-    { name = "mistletoe", specifier = ">=1.3.0" },
-    { name = "pillow", specifier = ">=10.1.0" },
-    { name = "pre-commit", marker = "extra == 'dev'", specifier = ">=3.5.0" },
-    { name = "pygments", specifier = ">=2.18.0" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.3.2" },
-    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=5.0.0" },
-    { name = "pytest-django", marker = "extra == 'dev'", specifier = ">=4.8.0" },
-    { name = "python-dateutil", specifier = ">=2.8.1" },
-    { name = "pyyaml", specifier = ">=6.0.1" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "django-debug-toolbar", specifier = ">=4.4.6" },
-    { name = "django-environ", specifier = ">=0.11.2" },
-    { name = "django-extensions", specifier = ">=3.2.3" },
-    { name = "django-tinymce", specifier = ">=4.1.0" },
-    { name = "djlint", specifier = ">=1.34.1" },
-    { name = "docutils", specifier = ">=0.20.1" },
-    { name = "pre-commit", specifier = ">=3.5.0" },
-    { name = "pytest", specifier = ">=8.3.2" },
-    { name = "pytest-cov", specifier = ">=5.0.0" },
-    { name = "pytest-django", specifier = ">=4.8.0" },
+sdist = { url = "https://files.pythonhosted.org/packages/b4/9c/296070378378d47036e1ee5b085453a44dad92f168c151c3a9c7940e5111/django_commoncontent-0.3.0.tar.gz", hash = "sha256:761f2096ea39632b01ca51012ca5acd8f218eb1a8f6b57a734771cf928e8b0f0", size = 117759 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8a/e9/29465a5479a362611992f14ef295c97426d5fdb9e7105b3ee7db545aa33b/django_commoncontent-0.3.0-py3-none-any.whl", hash = "sha256:2e680e538d502aa8a9adf8a52c900f98da4a108bb8029f1818abf0916ebae431", size = 56086 },
 ]
 
 [[package]]
