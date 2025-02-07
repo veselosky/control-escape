@@ -166,7 +166,7 @@ PRAGMA cache_size = 1000000000;
 PRAGMA foreign_keys = true;
 PRAGMA temp_store = memory;"""
 SQLITE_OPTIONS = {
-    "transaction_mode": "immediate",
+    "transaction_mode": "IMMEDIATE",
     "init_command": SQLITE_PRAGMAS,
 }
 DATABASES = {"default": env.db("DATABASE_URL", default=f"sqlite:///{SQLITE_DB}")}
