@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-import importlib
+from importlib.util import find_spec
 from pathlib import Path
 
 import commoncontent.apps
@@ -21,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT = __name__.split(".")[0]
 # Get environment settings
 env = environ.Env()
-DOTENV = BASE_DIR / ".env"
+# Switched to src layout, so .env is now in the parent directory
+DOTENV = BASE_DIR.parent / ".env"
 if DOTENV.exists() and not env("IGNORE_ENV_FILE", default=False):
     environ.Env.read_env(DOTENV)
 
@@ -33,6 +34,7 @@ ROOT_URLCONF = f"{PROJECT}.urls"
 
 INSTALLED_APPS = [
     *commoncontent.apps.CONTENT,
+    "django_extensions",
     "django.contrib.admin",
     "django.contrib.admindocs",
     "django.contrib.auth",
@@ -114,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # insecure configuration in production.
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG", default=False)
-ALLOWED_HOSTS = env("ALLOWED_HOSTS", default=[])
+ALLOWED_HOSTS = env("ALLOWED_HOSTS", default=["localhost"])
 
 # Local data written by the app should be kept in one directory for ease of backup.
 # In DEV this can be a subdir of BASE_DIR. In production, for single-server setups
@@ -127,10 +129,10 @@ DATA_DIR.mkdir(exist_ok=True)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 STATIC_URL = "/static/"
-STATIC_ROOT = DATA_DIR / "static"
+STATIC_ROOT = DATA_DIR / "www" / "static"
 STATIC_ROOT.mkdir(parents=True, exist_ok=True)
 MEDIA_URL = "/media/"
-MEDIA_ROOT = DATA_DIR / "media"
+MEDIA_ROOT = DATA_DIR / "www" / "media"
 MEDIA_ROOT.mkdir(parents=True, exist_ok=True)
 
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated
@@ -180,17 +182,20 @@ EMAIL_CONFIG = env.email_url("EMAIL_URL", default="consolemail://")
 vars().update(EMAIL_CONFIG)
 
 # CELERY settings
-# If the environment has not provided settings, assume there is no broker
-# and run celery tasks in-process. This means you MUST provide
-# CELERY_TASK_ALWAYS_EAGER=False in your environment to actually use celery.
-CELERY_TASK_ALWAYS_EAGER = env("CELERY_TASK_ALWAYS_EAGER", default=True)
-CELERY_TASK_EAGER_PROPAGATES = env("CELERY_TASK_EAGER_PROPAGATES", default=True)
-# For development setup, assume default of local redis.
-CELERY_BROKER_URL = env("CELERY_BROKER_URL", default="redis://localhost:6379/1")
-CELERY_RESULT_BACKEND = env("CELERY_RESULT_BACKEND", default="")
-CELERY_TIME_ZONE = TIME_ZONE
+if find_spec("celery"):
+    # CELERY settings
+    # If the environment has not provided settings, assume there is no broker
+    # and run celery tasks in-process. This means you MUST provide
+    # CELERY_TASK_ALWAYS_EAGER=False in your environment to actually use celery.
+    CELERY_TASK_ALWAYS_EAGER = env("CELERY_TASK_ALWAYS_EAGER", default=True)
+    CELERY_TASK_EAGER_PROPAGATES = env("CELERY_TASK_EAGER_PROPAGATES", default=True)
+    # For development setup, assume default of local redis.
+    CELERY_BROKER_URL = env("CELERY_BROKER_URL", default="redis://localhost:6379/1")
+    CELERY_RESULT_BACKEND = env("CELERY_RESULT_BACKEND", default="")
+    CELERY_TIME_ZONE = TIME_ZONE
+
 # If celery beat is installed in the environment, use its database scheduler.
-if importlib.util.find_spec("django_celery_beat"):
+if find_spec("django_celery_beat"):
     CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
     INSTALLED_APPS.append("django_celery_beat")
 
@@ -218,7 +223,7 @@ LOGGING = {
 if DEBUG:
     # SECURITY WARNING: don't run with debug turned on in production!
 
-    if importlib.util.find_spec("debug_toolbar"):
+    if find_spec("debug_toolbar"):
         INSTALLED_APPS.append("debug_toolbar")
         MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
         INTERNAL_IPS = [
