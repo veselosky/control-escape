@@ -2,15 +2,15 @@
 #    uv pip compile -o requirements.txt pyproject.toml
 asgiref==3.8.1
     # via django
-certifi==2024.8.30
+certifi==2025.1.31
     # via requests
-charset-normalizer==3.3.2
+charset-normalizer==3.4.1
     # via requests
 click==8.1.8
     # via granian
 defusedxml==0.7.1
     # via django-bootstrap-icons
-django==5.1
+django==5.1.6
     # via
     #   control-escape (pyproject.toml)
     #   django-appconf
@@ -25,7 +25,7 @@ django-bootstrap-icons==0.9.0
     # via django-commoncontent
 django-commoncontent==0.3.0
     # via control-escape (pyproject.toml)
-django-environ==0.11.2
+django-environ==0.12.0
     # via control-escape (pyproject.toml)
 django-extensions==3.2.3
     # via control-escape (pyproject.toml)
@@ -35,13 +35,13 @@ django-sitevars==1.0.2
     # via
     #   control-escape (pyproject.toml)
     #   django-commoncontent
-django-taggit==6.0.0
+django-taggit==6.1.0
     # via django-commoncontent
 docutils==0.21.2
     # via control-escape (pyproject.toml)
 granian==1.7.6
     # via control-escape (pyproject.toml)
-idna==3.8
+idna==3.10
     # via requests
 markdown-it-py==3.0.0
     # via rich
@@ -51,12 +51,12 @@ mistletoe==1.4.0
     # via django-commoncontent
 pilkit==3.0
     # via django-imagekit
-pillow==10.4.0
+pillow==11.1.0
     # via
     #   control-escape (pyproject.toml)
     #   django-commoncontent
     #   pilkit
-pygments==2.18.0
+pygments==2.19.1
     # via
     #   django-commoncontent
     #   rich
@@ -64,17 +64,17 @@ python-dateutil==2.9.0.post0
     # via django-commoncontent
 pyyaml==6.0.2
     # via django-commoncontent
-redis==5.0.8
+redis==5.2.1
     # via control-escape (pyproject.toml)
 requests==2.32.3
     # via django-bootstrap-icons
-rich==13.7.1
+rich==13.9.4
     # via control-escape (pyproject.toml)
-six==1.16.0
+six==1.17.0
     # via python-dateutil
-sqlparse==0.5.0
+sqlparse==0.5.3
     # via django
-urllib3==2.2.2
+urllib3==2.3.0
     # via requests
 uvloop==0.21.0
     # via granian
