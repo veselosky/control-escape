@@ -24,9 +24,6 @@ dependencies = [
 requires = ["setuptools>=66.1.1", "setuptools-scm>=7.0.5", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools]
-package-dir = { "" = "src" }
-
 [tool.setuptools.dynamic.version]
 attr = "ce.__version__"
 

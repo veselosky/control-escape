@@ -1,0 +1,61 @@
+# Comments are provided throughout this file to help you get started.
+# If you need more help, visit the Docker Compose reference guide at
+# https://docs.docker.com/go/compose-spec-reference/
+
+# Here the instructions define your application as a service called "django".
+# This service is built from the Dockerfile in the current directory.
+# You can add other services your application may depend on here, such as a
+# database or a cache. For examples, see the Awesome Compose repository:
+# https://github.com/docker/awesome-compose
+volumes:
+  redis_data:
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: ce_local_django
+    ports:
+      - 8000:8000
+    volumes:
+      - ./var/db:/app/var/db
+      - ./var/www:/app/var/www
+    environment:
+      - CACHE_URL=redis://redis:6379/0
+      - DATA_DIR=/app/var
+    env_file:
+      - .env
+    depends_on:
+      redis:
+        condition: service_healthy
+      # mailpit:
+      #   condition: service_healthy
+  redis:
+    image: docker.io/redis:7.4-alpine
+    container_name: ce_local_redis
+    restart: unless-stopped
+    ports:
+      - 6379:6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 6s
+      timeout: 5s
+      retries: 3
+    volumes:
+      - redis_data:/data
+  caddy:
+    image: caddy:2.8.4
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./var/www:/var/www
+    depends_on:
+      - django
+  # mailpit:
+  #   image: docker.io/axllent/mailpit:latest
+  #   container_name: ce_local_mailpit
+  #   ports:
+  #     - "8025:8025"
+  #     - "1025:1025"
