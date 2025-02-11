@@ -117,6 +117,13 @@ AUTH_PASSWORD_VALIDATORS = [
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG", default=False)
 ALLOWED_HOSTS = env("ALLOWED_HOSTS", default=["localhost"])
+# If running behind a reverse proxy that terminates SSL for you, you need to set
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# and possibly SECURE_SSL_REDIRECT = True
+# https://docs.djangoproject.com/en/5.1/ref/settings/#secure-proxy-ssl-header
+# https://docs.djangoproject.com/en/5.1/ref/settings/#secure-ssl-redirect
+# https://stackoverflow.com/a/71482883
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # Local data written by the app should be kept in one directory for ease of backup.
 # In DEV this can be a subdir of BASE_DIR. In production, for single-server setups
