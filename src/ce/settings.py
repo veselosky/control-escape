@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.redirects",
+    "django.contrib.sitemaps",
     "django.contrib.sites",
     "django.contrib.staticfiles",
     "sitevars",
