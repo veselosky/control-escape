@@ -125,6 +125,7 @@ ALLOWED_HOSTS = env("ALLOWED_HOSTS", default=["localhost"])
 # https://docs.djangoproject.com/en/5.1/ref/settings/#secure-ssl-redirect
 # https://stackoverflow.com/a/71482883
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_SSL_REDIRECT = env("SECURE_SSL_REDIRECT", default=False)
 
 # Local data written by the app should be kept in one directory for ease of backup.
 # In DEV this can be a subdir of BASE_DIR. In production, for single-server setups
