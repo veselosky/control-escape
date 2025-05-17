@@ -31,15 +31,14 @@ present. This makes it the loader of choice for Linux-only systems.
 
 LILO does have a few limitations, however, which means it is not perfect for everyone.
 For starters, LILO can install itself in two places on your hard drive: the _boot
-sector_ of a partition ([what's a partition?]({{<ref "lx-partition">}})), or the _master
-boot record_ of the hard drive. The master boot record is the place on your hard drive
-that your computer\'s BIOS looks for the _bootstrap_ program that will load your
-operating system. This can be LILO, or it can be the DOS (and Windows) boot loader. If
-there is no other operating system present, LILO will have to be in the master boot
-record. However, some operating systems, notably Windows NT, don\'t like for the master
-boot record to be altered. Also, some disk utilities will see the master boot record as
-\"corrupted\" and will kindly \"fix\" it for you, thus erasing LILO and preventing you
-from booting Linux.
+sector_ of a partition ([what's a partition?](lx-partition)), or the _master boot
+record_ of the hard drive. The master boot record is the place on your hard drive that
+your computer\'s BIOS looks for the _bootstrap_ program that will load your operating
+system. This can be LILO, or it can be the DOS (and Windows) boot loader. If there is no
+other operating system present, LILO will have to be in the master boot record. However,
+some operating systems, notably Windows NT, don\'t like for the master boot record to be
+altered. Also, some disk utilities will see the master boot record as \"corrupted\" and
+will kindly \"fix\" it for you, thus erasing LILO and preventing you from booting Linux.
 
 If you run into problems like this, you can install LILO into the boot sector of the
 Linux partition, and allow the DOS boot loader to live in the master boot record. In

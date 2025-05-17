@@ -15,6 +15,8 @@ Once you have Linux installed and running, the most important piece of informati
 need is how to get help. There are megabytes of documentation right there on your Linux
 system that can answer all of your questions, if you just know how to access it!
 
+<!--more-->
+
 ### `man` Pages
 
 The standard way to get help, which works on any UNIX system, is a command called `man`
@@ -23,10 +25,10 @@ you would type: `man grep`
 
 This displays a help screen describing the program and its usage. Man pages, as they are
 known, are formatted on the fly from special source files, and are displayed using the
-[pager program]({{<ref "cli-basics#viewing-files">}}) `less`. You can scroll back and
-forth line by line with the arrow keys or whole screens using the `PgUp` and `PgDn`
-keys. When you\'re done reading, **press Q to quit** (the `escape` key will _not_ get
-you out of `less`) and you\'ll get back to the command prompt.
+[pager program](cli-basics#viewing-files) `less`. You can scroll back and forth line by
+line with the arrow keys or whole screens using the `PgUp` and `PgDn` keys. When you\'re
+done reading, **press Q to quit** (the `escape` key will _not_ get you out of `less`)
+and you\'ll get back to the command prompt.
 
 Man pages are stored in a categorized database. These are the standard categories:
 
@@ -81,11 +83,11 @@ find that the command you want is `cp` for copying files.
 
 If the `apropos` and `whatis` commands don\'t work on your system, it may mean that the
 whatis database has not been created, or is corrupt. You can rebuild it by running
-`/usr/sbin/makewhatis` as [SuperUser]({{<ref "users-groups#becoming-superuser">}}). Note
-that the `apropos` command will accept only one parameter. You cannot search for
-multiple keywords. If you try, only the first will be used. The `whatis` command will
-accept multiple search words, but searches for them individually rather than as a group
-(in other words, combining them with OR rather than AND).
+`/usr/sbin/makewhatis` as [SuperUser](users-groups#becoming-superuser). Note that the
+`apropos` command will accept only one parameter. You cannot search for multiple
+keywords. If you try, only the first will be used. The `whatis` command will accept
+multiple search words, but searches for them individually rather than as a group (in
+other words, combining them with OR rather than AND).
 
 ### `info`
 
@@ -105,8 +107,8 @@ accurate. To get info on the `grep` command, type:
 The info viewer looks and behaves much like GNU Emacs. Most of the emacs key
 combinations will work in the info viewer. If you aren\'t familiar with emacs, you
 should probably get familiar with it, as its control keys and syntax are inescapably
-emulated by hundreds of Linux programs. (See [Editing with
-Emacs]({{<ref "editing-emacs">}}) for a basic tutorial and list of commands).
+emulated by hundreds of Linux programs. (See [Editing with Emacs](editing-emacs) for a
+basic tutorial and list of commands).
 
 Navigating info documentation isn\'t terribly complicated, nor is it completely
 intuitive. Thankfully, there is a self teaching tutorial included with the package. At
@@ -181,7 +183,7 @@ Here are some major points you need to know:
 
 Some other major differences require deeper explanations:
 
-- [The Linux (Virtual) File System]({{<ref "lx-filesys">}})
+- [The Linux (Virtual) File System](lx-filesys)
 
 ## Win/DOS to Linux Quick Reference
 

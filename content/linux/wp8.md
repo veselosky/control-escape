@@ -49,12 +49,12 @@ administrator account, so that you have access to system directories. At one tim
 had announced that there was a potential security hole in WordPerfect if it is installed
 by root. This problem has (I hope) long since been fixed, but it would be wise to check
 the [Corel Linux Web site](http://linux.corel.com). For now, log on with your normal
-user account (see [User and SuperUser]({{<ref "users-groups">}})). WordPerfect doesn\'t
-need to write anything to your library directories, so this should not effect your
-install, but it will effect where you are allowed to install it, since as a regular user
-you probably do not have permission to write to the `/usr` directory tree. Since this
-edition of WordPerfect is for personal use only, it is not unreasonable to install it to
-your home directory. More on this later.
+user account (see [User and SuperUser](users-groups)). WordPerfect doesn\'t need to
+write anything to your library directories, so this should not effect your install, but
+it will effect where you are allowed to install it, since as a regular user you probably
+do not have permission to write to the `/usr` directory tree. Since this edition of
+WordPerfect is for personal use only, it is not unreasonable to install it to your home
+directory. More on this later.
 
 First, create an empty directory to store the setup files: `mkdir corel` Then, move the
 downloaded files to that directory and extract them. This is a good time to correct

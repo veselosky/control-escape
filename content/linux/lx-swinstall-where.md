@@ -25,7 +25,7 @@ that you may not be able to find it.
 On the other hand, if you were installing a server or a command line utility, you
 probably will not find it in your menu no matter how hard you look. So let\'s take a
 quick tour to find out where files live on your Linux system. (You may first want to
-read about the [Linux Virtual File System]({{<ref "lx-filesys">}}) for some background.)
+read about the [Linux Virtual File System](lx-filesys) for some background.)
 
 ## User Programs (binaries)
 
@@ -46,10 +46,10 @@ programs here.
 
 ### `/usr/local/bin` - \"Local\" commands
 
-When you compile software from source code (see [Installing from
-Source]({{<ref "lx-swinstall-tar">}})), those install files are usually kept separate
-from those provided as part of your Linux distribution. That is what the `/usr/local/`
-hierarchy is for.
+When you compile software from source code (see
+[Installing from Source](lx-swinstall-tar)), those install files are usually kept
+separate from those provided as part of your Linux distribution. That is what the
+`/usr/local/` hierarchy is for.
 
 ## System Administration Programs (binaries)
 
@@ -67,8 +67,8 @@ is where to look for the binaries.
 
 ### `/usr/local/sbin` - \"Local\" System Administration Commands
 
-When you compile servers or administration utilities from source code (see [Installing
-from Source]({{<ref "lx-swinstall-tar">}})), this is where the binaries normally will
+When you compile servers or administration utilities from source code (see
+[Installing from Source](lx-swinstall-tar)), this is where the binaries normally will
 go.
 
 ## Libraries
@@ -83,7 +83,7 @@ library files are placed: `/lib`, `/usr/lib`, and `/usr/local/lib`.
 Documentation is a minor exception to the pattern of file placement. Pages of the system
 manual (`man` pages) follow the same pattern as the programs they document: `/man`,
 `/usr/man`, and `/usr/local/man`. You should not access these files directly, however,
-but by using the `man` command (see [Getting Help]({{<ref "bootstrap">}})).
+but by using the `man` command (see [Getting Help](bootstrap)).
 
 Many programs install addition documentation in the form of text files, HTML, or other
 things not `man` pages. This extra documentation is stored in directories under

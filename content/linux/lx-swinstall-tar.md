@@ -135,9 +135,8 @@ lucky, the software will compile anyway.
 Assuming the compile phase completes without error, the next step is to actually install
 the software using `make install`. This invokes the `make` utility again, this time
 using it to copy the newly compiled files where they need to be in order to run your
-program. (See [Where did the files go?]({{<ref "lx-swinstall-where">}})) With some
-programs, you can remove the installed files using `make uninstall` as well, but this is
-not universal.
+program. (See [Where did the files go?](lx-swinstall-where)) With some programs, you can
+remove the installed files using `make uninstall` as well, but this is not universal.
 
 Most errors you will bump into while compiling have to do with missing libraries that
 the software depends on. Every case is unique, but watch for \"not found\" or \"unable

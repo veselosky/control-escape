@@ -4,13 +4,12 @@ title: "Introducing The X Window System"
 description:
   "A brief introduction to the X Window System, the Linux graphical interface. Covers
   installation and initial configuration."
+date: "2011-06-04T23:16:21-0400"
 params:
   author: "Vince Veselosky"
 ---
 
-:::: warning ::: title Warning :::
-
-This article is badly out of date. It is retained for historical purposes only. ::::
+**WARNING:** This article is out of date. It is retained for historical purposes only.
 
 The X Window System is the graphical interface for Linux (and I think every other
 variant of UNIX, too). A word of caution for users of MS Windows: unless you are looking
@@ -52,10 +51,10 @@ properly. It needs to know about your video card and monitor so that it can use 
 correct X server and the optimal screen resolutions and refresh rates. Some
 distributions contain special tools for configuring X on your system. Red Hat uses the X
 Configurator to automatically detect information about your video card. To run it,
-[become SuperUser]({{<ref "users-groups#becoming-superuser">}}) and type `setup` at the
-terminal. (This setup utility can also be used to configure your sound card, system
-time, and other things as well). SuSE Linux has a utility called `sax` which performs
-this task. You can access it through the menus in Yast, the SuSE setup tool.
+[become SuperUser](users-groups#becoming-superuser) and type `setup` at the terminal.
+(This setup utility can also be used to configure your sound card, system time, and
+other things as well). SuSE Linux has a utility called `sax` which performs this task.
+You can access it through the menus in Yast, the SuSE setup tool.
 
 If these automated tools fail to get you up and running, or are not available in your
 distribution, you can configure XFree86 using tools that come in the XFree86
