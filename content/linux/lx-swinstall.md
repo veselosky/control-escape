@@ -6,7 +6,6 @@ description:
   will need, with specific references for debian,ubuntu, fedora, mandriva, and compiling
   from source."
 date: "2011-06-03T22:52:56-0400"
-keywords: "install software,Linux,rpm,deb,tar,tgz"
 params:
   author: "Vince Veselosky"
   copyright: "© 2011 Vince Veselosky"

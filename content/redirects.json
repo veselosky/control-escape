@@ -1,0 +1,362 @@
+[
+  {
+    "model": "redirects.redirect",
+    "pk": 1,
+    "fields": {
+      "site": 1,
+      "old_path": "/linux/license.html",
+      "new_path": "http://www.control-escape.com/license.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 2,
+    "fields": {
+      "site": 1,
+      "old_path": "/linux/winuser.html",
+      "new_path": "http://www.control-escape.com/linux/contents.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 3,
+    "fields": {
+      "site": 1,
+      "old_path": "/shop/",
+      "new_path": "http://www.control-escape.com/books/"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 4,
+    "fields": {
+      "site": 1,
+      "old_path": "/winuser.html",
+      "new_path": "http://www.control-escape.com/linux/contents.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 5,
+    "fields": {
+      "site": 1,
+      "old_path": "/contents.html",
+      "new_path": "http://www.control-escape.com/linux/contents.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 6,
+    "fields": {
+      "site": 1,
+      "old_path": "/lilo-cfg.html",
+      "new_path": "http://www.control-escape.com/linux/lilo-cfg.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 7,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-cert.html",
+      "new_path": "http://www.control-escape.com/linux/lx-cert.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 8,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-filesys.html",
+      "new_path": "http://www.control-escape.com/linux/lx-filesys.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 9,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-install.html",
+      "new_path": "http://www.control-escape.com/linux/lx-install.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 10,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-mounting.html",
+      "new_path": "http://www.control-escape.com/linux/lx-mounting.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 11,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-partition.html",
+      "new_path": "http://www.control-escape.com/linux/lx-partition.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 12,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-samba.html",
+      "new_path": "http://www.control-escape.com/linux/lx-samba.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 13,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-swinstall.html",
+      "new_path": "http://www.control-escape.com/linux/lx-swinstall.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 14,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-x.html",
+      "new_path": "http://www.control-escape.com/linux/lx-x.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 15,
+    "fields": {
+      "site": 1,
+      "old_path": "/x.html",
+      "new_path": "http://www.control-escape.com/linux/x.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 16,
+    "fields": {
+      "site": 1,
+      "old_path": "/bootload.html",
+      "new_path": "http://www.control-escape.com/linux/bootload.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 17,
+    "fields": {
+      "site": 1,
+      "old_path": "/wp8.html",
+      "new_path": "http://www.control-escape.com/linux/wp8.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 18,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-reading.html",
+      "new_path": "http://www.control-escape.com/linux/bootstrap.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 19,
+    "fields": {
+      "site": 1,
+      "old_path": "/linux/lx-reading.html",
+      "new_path": "http://www.control-escape.com/linux/bootstrap.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 20,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-basics.html",
+      "new_path": "http://www.control-escape.com/linux/bootstrap.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 21,
+    "fields": {
+      "site": 1,
+      "old_path": "/linux/lx-basics.html",
+      "new_path": "http://www.control-escape.com/linux/bootstrap.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 22,
+    "fields": {
+      "site": 1,
+      "old_path": "/topic-idx.html",
+      "new_path": "http://www.control-escape.com/linux/contents.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 23,
+    "fields": {
+      "site": 1,
+      "old_path": "/browse.html",
+      "new_path": "http://www.control-escape.com/linux/contents.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 24,
+    "fields": {
+      "site": 1,
+      "old_path": "/xemacs.html",
+      "new_path": "http://www.control-escape.com/linux/editing-emacs.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 25,
+    "fields": {
+      "site": 1,
+      "old_path": "/linux/xemacs.html",
+      "new_path": "http://www.control-escape.com/linux/editing-emacs.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 26,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-postinstall.html",
+      "new_path": "http://www.control-escape.com/linux/bootstrap.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 27,
+    "fields": {
+      "site": 1,
+      "old_path": "/linux/lx-postinstall.html",
+      "new_path": "http://www.control-escape.com/linux/bootstrap.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 28,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-translate.html",
+      "new_path": "http://www.control-escape.com/linux/bootstrap.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 29,
+    "fields": {
+      "site": 1,
+      "old_path": "/linux/lx-translate.html",
+      "new_path": "http://www.control-escape.com/linux/bootstrap.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 30,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-dualboot.html",
+      "new_path": "http://www.control-escape.com/linux/lx-whatislinux.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 31,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-before.html",
+      "new_path": "http://www.control-escape.com/linux/lx-whatislinux.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 32,
+    "fields": {
+      "site": 1,
+      "old_path": "/linux/lx-before.html",
+      "new_path": "http://www.control-escape.com/linux/lx-whatislinux.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 33,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-obtain.html",
+      "new_path": "http://www.control-escape.com/linux/lx-whatislinux.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 34,
+    "fields": {
+      "site": 1,
+      "old_path": "/linux/lx-obtain.html",
+      "new_path": "http://www.control-escape.com/linux/lx-whatislinux.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 35,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-hwcompat.html",
+      "new_path": "http://www.control-escape.com/linux/lx-install.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 36,
+    "fields": {
+      "site": 1,
+      "old_path": "/linux/lx-hwcompat.html",
+      "new_path": "http://www.control-escape.com/linux/lx-install.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 37,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-makeroom.html",
+      "new_path": "http://www.control-escape.com/linux/lx-partition.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 38,
+    "fields": {
+      "site": 1,
+      "old_path": "/linux/lx-makeroom.html",
+      "new_path": "http://www.control-escape.com/linux/lx-partition.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 39,
+    "fields": {
+      "site": 1,
+      "old_path": "/lx-shell.html",
+      "new_path": "http://www.control-escape.com/linux/cli-basics.html"
+    }
+  },
+  {
+    "model": "redirects.redirect",
+    "pk": 40,
+    "fields": {
+      "site": 1,
+      "old_path": "/linux/lx-shell.html",
+      "new_path": "http://www.control-escape.com/linux/cli-basics.html"
+    }
+  }
+]

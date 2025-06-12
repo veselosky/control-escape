@@ -3,7 +3,6 @@ type: article
 title: "Where did the files go?"
 description: "Where do program files go when you install new Linux software?"
 date: "2011-06-03T22:01:11-0400"
-keywords: "install software,Linux,rpm,deb,tar,tgz"
 params:
   author: "Vince Veselosky"
   copyright: "© 2011 Vince Veselosky"

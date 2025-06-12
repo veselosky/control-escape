@@ -10,10 +10,9 @@ params:
   contact: "<vince@control-escape.com>"
 ---
 
-:::: caution ::: title Caution :::
-
-Sorry, I haven\'t had a chance to update this page in a while. I removed some dead
-links. Hopefully the information that remains is still useful. ::::
+{{< warning >}}
+This page is outdated and is retained for historical purposes only.
+{{< /warning >}}
 
 Linux is an operating system ideal for self-study, since the source code and
 documentation are freely available. Sites like

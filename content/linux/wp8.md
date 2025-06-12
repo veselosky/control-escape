@@ -10,8 +10,11 @@ params:
   orphan: "True"
 ---
 
+{{< warning >}}
 Note: Corel no longer makes Wordperfect for Linux. This article is out of date and is
-maintained for historical reference only.
+retained for historical reference only.
+{{< /warning >}}
+<!--more-->
 
 ## Obtaining WordPerfect
 

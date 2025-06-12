@@ -13,6 +13,8 @@ and `dpkg` make it straightforward and efficient. This tutorial will guide you t
 the basics of using `apt` and `dpkg` to manage software on Debian-based distributions
 like Ubuntu.
 
+<!--more-->
+
 ## What are `apt` and `dpkg`?
 
 - **`apt` (Advanced Package Tool):** A high-level package management system that

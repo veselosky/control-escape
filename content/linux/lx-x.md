@@ -9,10 +9,9 @@ params:
   author: "Vince Veselosky"
 ---
 
-:::: warning ::: title Warning :::
-
+{{< warning title="Warning">}}
 Information on this page has not been updated in a long time. It may be out of date.
-::::
+{{< /warning >}}
 
 Among other things, X provides programs with standard services to display themselves
 graphically. The concept of running graphical programs in a window should be familiar to

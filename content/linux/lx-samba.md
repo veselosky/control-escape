@@ -2,7 +2,7 @@
 type: article
 title: "Networking Windows & Linux"
 description: "How to integrate Linux computers into a Windows network."
-keywords: "Samba, Linux"
+keywords: ["samba", "linux"]
 date: "2011-06-04T23:13:56-0400"
 params:
   author: "Vince Veselosky"
