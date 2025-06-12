@@ -1,0 +1,8 @@
+Recent Articles: 
+  other: "Recent Articles"
+Continue Reading: 
+  other: "Continue Reading"
+part_of_the_series: 
+  other: "Part of the series: {{ .Series }}"
+no_articles_found: 
+  other: "No articles found."

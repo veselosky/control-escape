@@ -1,0 +1,22 @@
+{{/* 
+Given an article that belongs to a series, display a list of all the articles in the
+series, linking to all but the current article.
+*/}}
+{{- $current := . }}
+{{- with index .Params.series 0 }}
+  {{- $seriesTerm := . }}
+  {{- with index site.Taxonomies.series $seriesTerm }}
+    <h2>{{ i18n "part_of_the_series" (dict "Series" $seriesTerm) }}</h2>
+    <ol class="list-group list-group-numbered">
+      {{- range .Pages }}
+        <li class="list-group-item">
+          {{- if eq .Permalink $current.Permalink }}
+            <strong>{{ .Title }}</strong>
+          {{- else }}
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          {{- end }}
+        </li>
+      {{- end }}
+    </ol>
+  {{- end }}
+{{- end }}

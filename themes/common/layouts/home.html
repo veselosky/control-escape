@@ -1,0 +1,10 @@
+{{- define "precontent" }}
+  {{- .Content }}
+{{- end }}
+{{ define "content" }}
+  {{- $pages := where .Site.Pages "Type" "article" }}
+  {{- $paginator := .Paginate $pages }}
+  <h2 class="border-bottom">{{ i18n "Recent Articles" }}</h2>
+  {{ partial "article_list_blog.html" $paginator.Pages -}}
+  {{ partial "pagination.html" . -}}
+{{- end }}

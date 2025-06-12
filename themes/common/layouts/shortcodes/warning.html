@@ -1,0 +1,6 @@
+<div class="alert alert-warning" role="alert">
+  {{ with .Get "title" }}
+    <strong>{{ . }}</strong><br>
+  {{ end }}
+  {{ .Inner | markdownify }}
+</div>
