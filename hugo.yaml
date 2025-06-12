@@ -1,0 +1,44 @@
+baseURL: "https://control-escape.com"
+copyright: "Copyright © 2025 Vince Veselosky"
+languageCode: "en-us"
+theme: "common"
+timeZone: "America/New_York"
+title: "Control-Escape"
+
+DefaultContentLanguage: "en"
+enableRobotsTXT: true
+
+SectionPagesMenu: "main"
+menus:
+  main:
+    - name: "Home"
+      url: "/"
+      weight: 1
+      
+pagination:
+  pagerSize: 15
+
+params:
+  author: 
+    name: "Vince Veselosky"
+    email: "vince@control-escape.com"
+  favicon: ""
+  site_logo: ""
+  tagline: "Control Your Digital Life; Escape Digital Serfdom."
+  description: "Take control of your tech: free software, automation, self-hosting, and more."
+  # This is the title of the section that will be displayed on the home page. Set manually,
+  # otherwise the default is the first section in the list above.
+  recent_copy: "Recent Articles"
+
+services:
+  rss:
+    limit: 50
+
+sitemap:
+  changefreq: "monthly"
+  priority: 0.5
+  filename: "sitemap.xml"
+
+taxonomies:
+  keyword: keywords
+  series: series
