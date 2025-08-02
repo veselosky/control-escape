@@ -1,5 +1,4 @@
 ---
-type: article
 title: "About Control-Escape"
 date: "2011-06-03T22:50:00-0400"
 params:

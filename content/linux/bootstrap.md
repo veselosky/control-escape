@@ -2,18 +2,33 @@
 type: article
 title: "Linux -- A Primer for the Impatient"
 description: "A one-page crash course in Linux for DOS/Windows users."
-date: "2011-06-03T22:49:22-0400"
+publishDate: "2011-06-03T22:49:22-0400"
+date: "2024-06-07T16:20:00-0400"
 params:
   author: "Vince Veselosky"
   copyright: "© 2011 Vince Veselosky"
   contact: "<vince@control-escape.com>"
 ---
 
+If you're coming to Linux from Windows and don't want to slog through volumes of 
+references and tutorials, this primer will get you started in just a short time.
+We'll cover:
+
+- help commands to teach yourself just what you need
+- documentation sources for deeper dives
+- Basic similarities and differences between Windows and Linux
+- Command quick reference
+- How to shut down
+
+<!--more-->
+
 ## Getting Help from Linux
 
 Once you have Linux installed and running, the most important piece of information you
 need is how to get help. There are megabytes of documentation right there on your Linux
 system that can answer all of your questions, if you just know how to access it!
+
+<!--more-->
 
 ### `man` Pages
 
@@ -189,31 +204,23 @@ Below is a quick table roughly mapping Windows or DOS commands to their Linux
 equivalents. A more comprehensive reference may be added later. Remember that Linux is
 _case sensitive!_
 
-<table>
-<tr><th>DOS/Windows Command </th><th> Linux Equivalent </th><th> What it does </th></tr>
-<tr><td><code>attrib</code></td><td><code>chmod</code></td><td>Change
-file or directory attributes or permissions. Note that file attributes on DOS are
-completely different from permissions on Linux.</td></tr>
-<tr><td><code>cd</code></td><td><code>cd</code></td><td>Change the current directory. Similar syntax.</td></tr>
-<tr><td><code>cls</code></td><td><code>clear</code></td><td>Clear the terminal screen.</td></tr>
-<tr><td><code>copy</code></td><td><code>cp -i</code></td><td>Copy files. Similar syntax. Without the -i, cp will not prompt for
-destructive actions like file replacement. If the target exists, it is overwritten.</td></tr>
-<tr><td><code>del</code></td><td><code>rm -i</code></td><td>Delete files. Without the -i, rm will not ask for confirmation.</td></tr>
-<tr><td><code>deltree</code></td><td><code>rm -r</code></td><td>Delete a directory and all its contents, including subdirectories.</td></tr>
-<tr><td><code>dir</code></td><td><code>ls</code></td><td>List the files in the current directory, or a named directory.</td></tr>
-<tr><td><code>md</code></td><td><code>mkdir</code></td><td>Create a new
-subdirectory. Similar syntax.</td></tr>
-<tr><td><code>mem</code></td><td><code>free -th</code></td><td>Display a summary of current memory usage
-and availability.</td></tr>
-<tr><td><code>more</code></td><td><code>more</code> (or <code>less</code>)</td><td>Display the contents of a file one page/screen at
-a time. The <code>less</code> utility allows scrolling back and forth.</td></tr>
-<tr><td><code>move</code></td><td><code>mv</code></td><td>Move a file.</td></tr>
-<tr><td><code>ren</code></td><td><code>mv</code></td><td>Rename a file or folder</td></tr>
-<tr><td><code>rd</code></td><td><code>rmdir</code></td><td>Delete an empty subdirectory. Similar syntax.</td></tr>
-<tr><td><code>type</code></td><td><code>cat</code></td><td>Display the contents of a file.</td></tr>
-<tr><td><code>ver</code></td><td><code>uname -sr</code></td><td>Display the name
-and version of the OS kernel.</td></tr>
-</table>
+| DOS/Windows Command | Linux Equivalent | What it does |
+| --- | --- | --- |
+| `attrib` | `chmod` | Change file or directory attributes or permissions. Note that file attributes on DOS are completely different from permissions on Linux. |
+| `cd` | `cd` | Change the current directory. Similar syntax. |
+| `cls` | `clear` | Clear the terminal screen. |
+| `copy` | `cp -i` | Copy files. Similar syntax. Without the -i, cp will not prompt for destructive actions like file replacement. If the target exists, it is overwritten. |
+| `del` | `rm -i` | Delete files. Without the -i, rm will not ask for confirmation. |
+| `deltree` | `rm -r` | Delete a directory and all its contents, including subdirectories. |
+| `dir` | `ls` | List the files in the current directory, or a named directory. |
+| `md` | `mkdir` | Create a new subdirectory. Similar syntax. |
+| `mem` | `free -th` | Display a summary of current memory usage and availability. |
+| `more` | `more` (or `less`) | Display the contents of a file one page/screen at a time. The `less` utility allows scrolling back and forth. |
+| `move` | `mv` | Move a file. |
+| `ren` | `mv` | Rename a file or folder |
+| `rd` | `rmdir` | Delete an empty subdirectory. Similar syntax. |
+| `type` | `cat` | Display the contents of a file. |
+| `ver` | `uname -sr` | Display the name and version of the OS kernel. |
 
 ## Shutting Down
 

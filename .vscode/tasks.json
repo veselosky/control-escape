@@ -1,14 +1,23 @@
 {
-  // See https://go.microsoft.com/fwlink/?LinkId=733558
-  // for the documentation about the tasks.json format
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Django Shell",
-      "type": "shell",
-      "command": "${command:python.interpreterPath} manage.py shell_plus",
-      "options": { "cwd": "${workspaceFolder}" },
-      "problemMatcher": []
-    }
-  ]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Hugo: Serve with Drafts",
+            "type": "shell",
+            "command": "hugo",
+            "args": [
+                "server",
+                "--buildDrafts"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }
+    ]
 }

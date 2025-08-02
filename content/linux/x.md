@@ -8,8 +8,9 @@ date: "2011-06-04T23:16:21-0400"
 params:
   author: "Vince Veselosky"
 ---
-
-**WARNING:** This article is out of date. It is retained for historical purposes only.
+{{< warning >}}
+This article is out of date. It is retained for historical purposes only.
+{{< /warning >}}
 
 The X Window System is the graphical interface for Linux (and I think every other
 variant of UNIX, too). A word of caution for users of MS Windows: unless you are looking

@@ -1,10 +1,11 @@
 ---
-title: "Django for Solopreneurs and Tiny Teams"
+title: Django for Solopreneurs and Tiny Teams
 date: 2024-06-08T18:23:34-04:00
 tags: []
 featured_image: ""
 description: ""
 type: page
+draft: true
 ---
 
 There are lots of web frameworks and programming tools out there. If you are already an

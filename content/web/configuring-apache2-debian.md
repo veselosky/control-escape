@@ -1,6 +1,7 @@
 ---
 title: "Configuring Apache 2 on Debian, Ubuntu"
 date: "2011-06-03T22:50:22-0400"
+type: article
 description: |
   An overview of the peculiar Apache 2 configuration layout on Debian
   and Debian-derived Linux systems like Ubuntu, as well as the tools
@@ -16,6 +17,7 @@ version 1 and the more modern version 2. The Debian maintainers have a peculiar 
 arranging the configuration files for Apache 2.0 which is not documented in the standard
 Apache documentation. This introduction should help you get acclimated to the Debian way
 of configuring Apache 2.0.
+<!--more-->
 
 ## Active Configuration Files
 
