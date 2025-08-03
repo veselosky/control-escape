@@ -12,7 +12,7 @@ SectionPagesMenu: "main"
 menus:
   main:
     - name: "Home"
-      url: "/"
+      pageRef: "/"
       weight: 1
       
 pagination:
