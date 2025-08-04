@@ -39,7 +39,7 @@ packages. Debian packages are used by Debian GNU/Linux (naturally), and distribu
 based on it, including Ubuntu, Knoppix, and Mepis. A Debian package file normally will
 be named something like `program-version-other.deb`
 
-Remember, you will need to [become SuperUser](users-groups#becoming-superuser) to
+Remember, you will need to [become SuperUser](/linux/users-groups#becoming-superuser) to
 install software.
 
 ## Debian, Ubuntu: APT
@@ -70,7 +70,7 @@ at once. :
     apt-get update; apt-get upgrade
 
 For a more indepth `apt-get` tutorial and other resources, see
-[Managing Software with APT and dpkg](lx-swinstall-apt).
+[Managing Software with APT and dpkg](/linux/lx-swinstall-apt).
 
 ## Fedora, Red Hat: `yum`
 
@@ -94,7 +94,7 @@ You can also explicitly update a single package with:
     yum update ${packagename}
 
 For a more indepth `yum` tutorial and other resources, see
-[Managing Software with yum and rpm](lx-swinstall-yum).
+[Managing Software with yum and rpm](/linux/lx-swinstall-yum).
 
 ## Mandriva: `urpm`
 
@@ -116,7 +116,7 @@ To install security updates and bug fixes:
     urpmi --auto-select
 
 For a more indepth `yum` tutorial and other resources, see
-[Managing Software with urpm](lx-swinstall-urpm).
+[Managing Software with urpm](/linux/lx-swinstall-urpm).
 
 ## Tar Balls
 
@@ -137,11 +137,11 @@ This command will not install the software, it will only extract the archived fi
 is your job then to find the README file or INSTALL file and read its instructions for
 installation. If the archive contains binaries there will usually be a setup script
 (often called `install.sh`) that you must execute as
-[SuperUser](users-groups#becoming-superuser).
+[SuperUser](/linux/users-groups#becoming-superuser).
 
 Very often, software delivered in tar balls is not in executable form, but in source
 code, which must first be compiled before it can be installed. For more details on this,
-see [Installing Software from Source Code](lx-swinstall-tar).
+see [Installing Software from Source Code](/linux/lx-swinstall-tar).
 
 ## Other Systems
 

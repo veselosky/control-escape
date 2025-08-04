@@ -69,7 +69,7 @@ Because it is so dangerous to be logged in as root, you should never use this ac
 unless you have to. The root account is meant to be used by the System Administrator to
 perform certain duties which can be destructive and therefore should only be performed
 by an expert. Some examples are emptying log files, mounting and unmounting file systems
-(more on this later under [Getting to CD's and Floppies](lx-mounting)), installing or
+(more on this later under [Getting to CD's and Floppies](/linux/lx-mounting)), installing or
 removing programs, and creating or deleting user accounts.
 
 ## Becoming SuperUser

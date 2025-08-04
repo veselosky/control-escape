@@ -10,9 +10,8 @@ params:
   contact: "<vince@control-escape.com>"
 ---
 
-{{< warning >}}
-This page is outdated and is retained for historical purposes only.
-{{< /warning >}}
+> [!WARNING]
+> This page is outdated and is retained for historical purposes only.
 
 Linux is an operating system ideal for self-study, since the source code and
 documentation are freely available. Sites like

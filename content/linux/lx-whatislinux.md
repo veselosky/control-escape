@@ -24,17 +24,17 @@ computers, handheld devices, and tiny embedded systems.
 ## Linux Distributions
 
 Technically, Linux is an operating system _kernel_, the core part of an operating
-system. (See [What is an operating system?](whatisopsys) if you are not clear on this
+system. (See [What is an operating system?](/linux/whatisopsys) if you are not clear on this
 point.) The Linux kernel is commonly bundled with many other components to form a
 complete `Linux Distribution`. When most people refer to Linux they are talking about
 this complete set of programs needed to run a computer, not just the kernel, and so
 shall we.
 
-Because Linux is an [open source](opensource) operating system, anyone can extend and
+Because Linux is an [open source](/linux/opensource) operating system, anyone can extend and
 distribute the system. Several companies and organizations put together the Linux kernel
 along with a host of programs and their own special setup utility and distribute the
 whole package. These are called \"distributions\".
-[Linux Installation, Step by Step](lx-install) has links to the official installation
+[Linux Installation, Step by Step](/linux/lx-install) has links to the official installation
 documentation for each distribution, as well as links to Control-Escape\'s reviews of
 the software and the installation procedure for each.
 

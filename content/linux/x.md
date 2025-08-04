@@ -8,9 +8,8 @@ date: "2011-06-04T23:16:21-0400"
 params:
   author: "Vince Veselosky"
 ---
-{{< warning >}}
-This article is out of date. It is retained for historical purposes only.
-{{< /warning >}}
+> [!WARNING]
+> This page is outdated and is retained for historical purposes only.
 
 The X Window System is the graphical interface for Linux (and I think every other
 variant of UNIX, too). A word of caution for users of MS Windows: unless you are looking
@@ -18,6 +17,8 @@ for fight, don\'t ever call it \"X Windows\" around a UNIX person! Flame wars ha
 for years over this. The proper term is \"The X Window System.\" If you must shorten it,
 call it X11, or just X. They\'ll know what you mean. I will be using these terms
 interchangeably below.
+
+<!--more-->
 
 Like everything else on Linux, the X Window System is based on a network paradigm. The
 program that actually controls your display, drawing the boxes and buttons you see, is
@@ -52,7 +53,7 @@ properly. It needs to know about your video card and monitor so that it can use 
 correct X server and the optimal screen resolutions and refresh rates. Some
 distributions contain special tools for configuring X on your system. Red Hat uses the X
 Configurator to automatically detect information about your video card. To run it,
-[become SuperUser](users-groups#becoming-superuser) and type `setup` at the terminal.
+[become SuperUser](/linux/users-groups#becoming-superuser) and type `setup` at the terminal.
 (This setup utility can also be used to configure your sound card, system time, and
 other things as well). SuSE Linux has a utility called `sax` which performs this task.
 You can access it through the menus in Yast, the SuSE setup tool.

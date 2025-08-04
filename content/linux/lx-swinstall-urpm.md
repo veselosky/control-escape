@@ -17,7 +17,7 @@ more.
 
 `urpm` isn\'t meant as a replacement for RPM, it is meant to make common RPM tasks
 easier. In many ways it resembles the package tool the of the Debian GNU/Linux
-distribution, [APT](lx-swinstall-apt).
+distribution, [APT](/linux/lx-swinstall-apt).
 
 ## Configuring `urpm`
 
@@ -38,7 +38,7 @@ When you\'ve installed your system from CDs, these will most likely already be i
 by `urpm`. To add more installation media (other CDs, local directories, remote
 directories), use `urpmi.addmedia`. Let\'s say you have a local \'rpms\' directory in
 your home directory where you keep downloaded RPMs. To add this directory to the urpm
-database, run (as [SuperUser](users-groups#becoming-superuser)):
+database, run (as [SuperUser](/linux/users-groups#becoming-superuser)):
 
     [root]# urpmi.addmedia local file://home/user_name/rpms
 
@@ -65,7 +65,7 @@ packages, etc. There is also a web tool called
 [Easy urpmi](http://www.linuxfordummies.org/addmedia/) that will help you locate mirrors
 and generate the `urpmi.addmedia` commands for you to cut and paste.
 
-To remove a resource from urpm, run (as [SuperUser](users-groups#becoming-superuser)):
+To remove a resource from urpm, run (as [SuperUser](/linux/users-groups#becoming-superuser)):
 
     [root]# urpmi.removemedia ${resource_name}
 
@@ -74,7 +74,7 @@ To remove a resource from urpm, run (as [SuperUser](users-groups#becoming-superu
 
 ## Installing And Removing Packages
 
-These commands require [SuperUser](users-groups#becoming-superuser) privileges.
+These commands require [SuperUser](/linux/users-groups#becoming-superuser) privileges.
 
 To install a package, use the `urpmi` command. For example, to install the \'mc\'
 package:
@@ -128,7 +128,7 @@ removes all installed packages whose names contain the string \'gtk\'.
 
 Another area where the `urpm` system really shines is querying, since the `urpm`
 database also contains information about packages which are not installed. The `urpm`
-query tool is `urpmf`. [SuperUser](users-groups#becoming-superuser) privileges are not
+query tool is `urpmf`. [SuperUser](/linux/users-groups#becoming-superuser) privileges are not
 required.
 
     [root]# urpmf ${file}

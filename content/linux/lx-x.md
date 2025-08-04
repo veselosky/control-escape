@@ -9,9 +9,8 @@ params:
   author: "Vince Veselosky"
 ---
 
-{{< warning title="Warning">}}
-Information on this page has not been updated in a long time. It may be out of date.
-{{< /warning >}}
+> [!WARNING]
+> This page is outdated and is retained for historical purposes only.
 
 Among other things, X provides programs with standard services to display themselves
 graphically. The concept of running graphical programs in a window should be familiar to
@@ -79,9 +78,9 @@ available for all major distributions by the time you read this. Check the
 [GNOME web site](http://www.gnome.org) for release announcements and installation
 instructions.
 
-Currently I am running the [K Desktop Environment](lx-kde.html)
+Currently I am running the [K Desktop Environment](/linux/lx-kde.html)
 ([www.kde.org](http://www.kde.org/)) version 1.1. KDE is a vast improvement over a
-standard X setup. It installs quite easily (see my [KDE section](lx-kde.html) for
+standard X setup. It installs quite easily (see my [KDE section](/linux/lx-kde.html) for
 details). It looks very nice and works pretty much like you\'d expect, borrowing its
 shortcut keys from Windows rather than emacs as many other Linux programs do. KDE has a
 terrific help system that integrates its own html-format help with the Linux man pages
