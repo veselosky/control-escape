@@ -143,8 +143,5 @@ Linux book anyway, you might as well get one with Linux inside and save some tim
 We recommend
 [The Official Ubuntu Book](http://www.amazon.com/gp/product/0132748509/ref=as_li_ss_tl?ie=UTF8&tag=controlescape-20)
 for beginners. If you\'re not sold on that, you might want to browse through our
-[Linux book store](../books/index.html) to find some other books with CDROM\'s. New
-books and new Linux distributions are arriving more quickly than we can update our list,
-so you may also want to check the
 [Linux Section on Amazon.com](http://www.amazon.com/exec/obidos/redirect?tag=controlescape-20&path=tg/browse/-/3849).
 Try sorting the books by publication date to find the most recent copies of Linux.

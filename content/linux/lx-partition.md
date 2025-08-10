@@ -61,7 +61,7 @@ confusing to new users.
 Personally, I favor the KISS principle (Keep It Simple, Stupid), especially for
 beginners. If you are installing a server that will serve multiple user\'s
 simultaneously and provide myriad services, you will want to read these manual sections
-as well as the [Partition Mini-HOWTO](http://tldp.org/HOWTO/mini/Partition/index.html),
+as well as the [Partition Mini-HOWTO](https://tldp.org/HOWTO/Partition/intro.html),
 an excellent document detailing the reasons one might want to create the seven or more
 partitions sometimes recommended in these primers.
 

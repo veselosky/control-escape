@@ -38,7 +38,7 @@ you would type: `man grep`
 
 This displays a help screen describing the program and its usage. Man pages, as they are
 known, are formatted on the fly from special source files, and are displayed using the
-[pager program](/linux/cli-basics#viewing-files) `less`. You can scroll back and forth line by
+[pager program](/linux/cli-basics#navigating-files-with-less) `less`. You can scroll back and forth line by
 line with the arrow keys or whole screens using the `PgUp` and `PgDn` keys. When you\'re
 done reading, **press Q to quit** (the `escape` key will _not_ get you out of `less`)
 and you\'ll get back to the command prompt.
