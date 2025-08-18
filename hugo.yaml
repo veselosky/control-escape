@@ -1,6 +1,7 @@
 baseURL: "https://control-escape.com"
 copyright: "Copyright © 2025 Vince Veselosky"
 languageCode: "en-us"
+# themesDir: "../hugo/themes"
 theme: "common"
 timeZone: "America/New_York"
 title: "Control-Escape"
@@ -22,6 +23,7 @@ params:
   author: 
     name: "Vince Veselosky"
     email: "vince@control-escape.com"
+  cover: img/blue-train-platform.webp
   favicon: ""
   site_logo: ""
   tagline: "Control Your Digital Life; Escape Digital Serfdom."
@@ -29,6 +31,10 @@ params:
   # This is the title of the section that will be displayed on the home page. Set manually,
   # otherwise the default is the first section in the list above.
   recent_copy: "Recent Articles"
+  render_hooks:
+    link:
+      errorLevel: "warning" # ignore (default), warning, or error (fails the build)
+      highlightBroken: true # true or false (default) (in development only)
 
 services:
   rss:
