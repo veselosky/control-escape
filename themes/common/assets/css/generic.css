@@ -27,7 +27,9 @@ https://css-tricks.com/line-clampin/
     rgba(255, 255, 255, 1) 100%
   );
 }
-
+.album .card {
+  max-width: 400px;
+}
 /* Article
 For readability, line length for text blocks should be restricted to ~80 chars.
 https://baymard.com/blog/line-length-readability
