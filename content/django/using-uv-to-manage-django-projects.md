@@ -4,6 +4,8 @@ date: "2024-08-28T18:23:34-04:00"
 keywords: ["uv", "django"]
 description: "Crash course in managing Django projects with Astral's uv"
 type: article
+params:
+   cover: img/uv-girl.webp
 ---
 
 `uv` is a tool from [Astral.sh](https://astral.sh) that helps you manage Python tools

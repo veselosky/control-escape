@@ -9,9 +9,7 @@
     </section>
 {{- end }}
 {{/*  Include a cover image if available  */}}
-{{- $resources := .Resources.ByType "image" }}
-{{- $img := .Resources.GetMatch "*feature*" }}
-{{- if not $img }}{{- $img := $resources.GetMatch "*cover*" }}{{- end }}
+{{- $img := partial "funcs/get_cover_image.html" . -}}
 {{- with $img }}
   {{- $large := $img.Resize "960x" }}
   <p>

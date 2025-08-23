@@ -4,6 +4,8 @@ type: article
 date: "2012-02-18T09:00:00-0400"
 title: "Django Settings: Three Things Conflated"
 keywords: ["django"]
+params:
+  cover: img/magic-pony-django.webp
 ---
 
 If you work on a large Django project, there's a good chance that you would describe

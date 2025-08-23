@@ -8,8 +8,6 @@
           {{- . -}}
         {{- else with .Title -}}
           {{- . -}}
-        {{- else with .Params.opengraph.title -}}
-          {{- . -}}
         {{- else -}}
           {{- .Site.Title -}}
         {{- end -}}
@@ -54,7 +52,7 @@
     {{ end -}}
     {{ block "extra_head" . -}}{{ end -}}
   </head>
-  <body class="p-3 d-flex flex-column align-items-center justify-content-center">
+  <body class="p-3 d-flex flex-column align-items-center justify-content-center" data-bs-theme="light">
     <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
     {{- block "header" . }}
       <header class="page_header {{ default "container" (.Param "bootstrap_container_class") }}">
@@ -62,7 +60,7 @@
       </header>
     {{- end }}
     <main id="main" role="main" 
-      class="main d-flex flex-column justify-content-center {{ default "container" (.Param "bootstrap_container_class") }}"
+      class="main d-flex flex-column align-items-center justify-content-center {{ default "container" (.Param "bootstrap_container_class") }}"
       >
     {{- block "precontent" . }}
       <div class="precontent">
@@ -81,8 +79,14 @@
     </main>
 
     {{- block "footer" . }}
-      <footer class="page_footer {{ default "container" (.Param "bootstrap_container_class") }}">
+      <footer class="page_footer border-top {{ default "container" (.Param "bootstrap_container_class") }}">
         {{ partial (default "footer.html" (.Param "footer_template")) . }}
+        {{ block "footer_credits" . }}
+          {{- $cover := .Param "cover" | default "img/cover.jpg" -}}
+          {{- with (index site.Data.imageMeta $cover) }}
+            <p class="image-credit"><small>Cover image: {{ .credit | safeHTML }}</small></p>
+          {{- end }}
+        {{- end }}
       </footer>
     {{- end }}
     {{- block "bootstrap_js" . }}

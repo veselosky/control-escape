@@ -6,6 +6,8 @@ description: A first try at adopting Docker in my development workflow.
 keywords:
   - devops
   - docker
+params:
+  cover: img/cargo-ship-dock.webp
 ---
 
 Docker has been around for many years now, and the ecosystem around "containers" has
