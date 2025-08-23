@@ -1,7 +1,6 @@
 {{ define "precontent" }}
   <div class="precontent">
-    <h1>{{ .Title }}</h1>
-    {{- .Content }}
+    {{- partial "article_text.html" . }}
   </div>
 {{ end }}
 {{- define "content" }}
