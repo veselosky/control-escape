@@ -2,8 +2,7 @@
 type: article
 title: "Installing Software on Linux"
 description:
-  "How to install software on your Linux system. Describes the tools and commands you
-  will need, with specific references for debian,ubuntu, fedora, mandriva, and compiling
+  "How to install software on your Linux system. Detailed commands for debian, ubuntu, fedora, and compiling
   from source."
 dateCreated: "2011-06-03T22:52:56-0400"
 date: "2025-08-23T10:52:56-0400"

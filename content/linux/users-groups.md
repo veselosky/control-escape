@@ -1,6 +1,7 @@
 ---
 type: article
 title: "Users and Groups"
+description: Learn how users, groups, and admin privileges keep your Linux system secure.
 date: "2024-06-07T16:20:00-0400"
 publishDate: "2011-06-03T22:53:15-0400"
 lastmod: "2024-06-07T16:20:00-0400"
@@ -21,6 +22,7 @@ deleting every file on the system.
 Understanding Linux user permissions is crucial for managing a secure and efficient
 system. This article will delve into the essentials of Linux user and group permissions,
 covering key concepts and configurations.
+<!--more-->
 
 ## Identity and Permissions
 
