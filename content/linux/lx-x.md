@@ -5,6 +5,8 @@ description:
   "A brief description of some of the visual elements of the X Window System, the Linux
   graphical interface."
 date: "2011-06-04T23:16:21-0400"
+tags:
+  - outdated
 params:
   author: "Vince Veselosky"
 ---

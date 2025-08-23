@@ -6,6 +6,8 @@ description:
   systems."
 date: "2011-06-04T22:51:00-0400"
 keywords: "LILO, Linux"
+tags:
+  - outdated
 params:
   author: "Vince Veselosky"
   copyright: "© 2011 Vince Veselosky"

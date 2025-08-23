@@ -5,6 +5,8 @@ description:
   "A brief introduction to the X Window System, the Linux graphical interface. Covers
   installation and initial configuration."
 date: "2011-06-04T23:16:21-0400"
+tags:
+  - outdated
 params:
   author: "Vince Veselosky"
 ---

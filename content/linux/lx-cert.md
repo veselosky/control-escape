@@ -4,6 +4,8 @@ title: "Linux Training and Certification"
 date: "2011-08-31T22:27:10-0400"
 description: "Where to find training and certification resources for Linux."
 keywords: "Linux Certification"
+tags:
+  - outdated
 params:
   author: "Vince Veselosky"
   copyright: "© 2011 Vince Veselosky"
