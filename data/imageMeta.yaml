@@ -11,3 +11,13 @@ img/uv-girl.webp:
 img/magic-pony-django.webp: 
   alt: The magical Django Pony
   credit: The magical <a href="https://djangopony.com/">Django Pony</a>.
+img/launch-platform-square.webp: 
+  alt: A rocket rising from a launch platform
+  credit: | 
+    Photo by <a href="https://unsplash.com/@spacex?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">SpaceX</a> 
+    on <a href="https://unsplash.com/photos/flying-rocket-on-air-at-daytime-t3HVjP4xNsg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+img/launch-platform.webp: 
+  alt: A rocket rising from a launch platform
+  credit: | 
+    Photo by <a href="https://unsplash.com/@spacex?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">SpaceX</a> 
+    on <a href="https://unsplash.com/photos/flying-rocket-on-air-at-daytime-t3HVjP4xNsg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
