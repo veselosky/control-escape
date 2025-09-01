@@ -7,7 +7,7 @@ localhost:80 {
 	root * /var/www # Set working dir to /var/www for this site
 
 	# Enable logging. Access logs go to stderr by default. This is what you want for
-	# contanerized applications, as logs are automatically collected by Docker/k8s.
+	# containerized applications, as logs are automatically collected by Docker/k8s.
 	log
 
 	# Creates a matcher that matches any file that exists in the root.
