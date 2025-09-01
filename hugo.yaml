@@ -15,18 +15,18 @@ menus:
     - name: "Home"
       pageRef: "/"
       weight: 1
-      
+
 pagination:
   pagerSize: 15
 
 params:
-  author: 
+  author:
     name: "Vince Veselosky"
     email: "vince@control-escape.com"
   cover: img/blue-train-platform.webp
   favicon: ""
   site_logo: ""
-  tagline: "Control Your Digital Life; Escape Digital Serfdom."
+  tagline: "Control Your Digital Life; Escape Vendor Lock-in."
   description: "Take control of your tech: free software, automation, self-hosting, and more."
   # This is the title of the section that will be displayed on the home page. Set manually,
   # otherwise the default is the first section in the list above.
@@ -48,3 +48,5 @@ sitemap:
 taxonomies:
   keyword: keywords
   series: series
+  tag: tags
+  category: categories

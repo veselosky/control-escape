@@ -8,4 +8,4 @@ params:
     cover: "img/launch-platform-square.webp"
 ---
 
-Control-Escape helps you take control of your digital life and escape the walled gardens of "Big Tech". Here you can learn to run your own cloud services (self-hosting), control your data, automate digital processes, and code your own tools. 
+Control-Escape helps you take control of your digital life and escape vendor lock-in. Here you can learn to run your own cloud services (self-hosting), control your data, automate digital processes, and code your own tools.
