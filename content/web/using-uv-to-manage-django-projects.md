@@ -1,8 +1,11 @@
 ---
 title: "Using uv to Manage Django Projects"
 date: "2024-08-28T18:23:34-04:00"
-tags: []
+keywords: ["uv", "django"]
 description: "Crash course in managing Django projects with Astral's uv"
+type: article
+params:
+   cover: img/uv-girl.webp
 ---
 
 `uv` is a tool from [Astral.sh](https://astral.sh) that helps you manage Python tools
@@ -10,6 +13,7 @@ and development projects. For all the details you can
 [read the docs](https://docs.astral.sh/uv/), but here's a quick lesson in what it can do
 and how it can help Python developers in the daily grind of developing Python software.
 We'll walk through managing a hypothetical Django project.
+<!--more-->
 
 ## Installing and/or Running Python Tools
 

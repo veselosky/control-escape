@@ -4,16 +4,16 @@ title: "Linux Training and Certification"
 date: "2011-08-31T22:27:10-0400"
 description: "Where to find training and certification resources for Linux."
 keywords: "Linux Certification"
+tags:
+  - outdated
 params:
   author: "Vince Veselosky"
   copyright: "© 2011 Vince Veselosky"
   contact: "<vince@control-escape.com>"
 ---
 
-:::: caution ::: title Caution :::
-
-Sorry, I haven\'t had a chance to update this page in a while. I removed some dead
-links. Hopefully the information that remains is still useful. ::::
+> [!WARNING]
+> This page is outdated and is retained for historical purposes only.
 
 Linux is an operating system ideal for self-study, since the source code and
 documentation are freely available. Sites like

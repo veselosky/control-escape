@@ -61,7 +61,7 @@ confusing to new users.
 Personally, I favor the KISS principle (Keep It Simple, Stupid), especially for
 beginners. If you are installing a server that will serve multiple user\'s
 simultaneously and provide myriad services, you will want to read these manual sections
-as well as the [Partition Mini-HOWTO](http://tldp.org/HOWTO/mini/Partition/index.html),
+as well as the [Partition Mini-HOWTO](https://tldp.org/HOWTO/Partition/intro.html),
 an excellent document detailing the reasons one might want to create the seven or more
 partitions sometimes recommended in these primers.
 
@@ -86,7 +86,7 @@ on drive space and have lots of RAM, go small.
 
 The _root_ file system is represented by a forward slash (/). It is the top of the
 directory tree, and contains Linux and everything that you install with Linux. (See
-[The Linux (Virtual) File System](lx-filesys) for details). This is roughly equivalent
+[The Linux (Virtual) File System](/linux/lx-filesys) for details). This is roughly equivalent
 to your \"C:\" drive under DOS or Windows. You _must_ create a partition for the root
 directory. (Don\'t confuse this with the \"root\" user account, who is the administrator
 of the system. That\'s a different kind of root!)

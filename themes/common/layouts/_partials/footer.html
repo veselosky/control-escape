@@ -1,0 +1,7 @@
+{{ with .Param "copyright" }}
+  <p>{{ . }}</p>
+{{ else with site.Copyright }}
+  <p>{{ . }}</p>
+{{ else }}
+  <p>Copyright {{ now.Year }}. All rights reserved.</p>
+{{ end }}

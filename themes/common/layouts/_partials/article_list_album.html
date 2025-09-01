@@ -1,0 +1,46 @@
+{{- /*
+    Article List Album
+    This template is used to display a list of articles in an album-style layout. It 
+    takes a list of articles as input and displays them in a grid format with images 
+    and titles.
+
+    Usage:
+      {{ partial "article_list_album.html" site.RegularPages }}
+
+    The name of the cover image defaults to "img/cover.jpg" if not specified in the params.
+*/}}
+<div class="album py-3">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+      {{- range . }}
+      {{- $section := .CurrentSection }}
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            {{- $cover := .Param "cover" | default "img/cover.jpg" }}
+            {{- $img := or (.Resources.Get $cover) ($section.Resources.Get $cover) (resources.Get $cover) }}
+            {{- with $img.Fill "400x225 webp q60" }}
+              {{/* The image cap is purely decorative on control-escape and conveys no 
+                added info. It makes a large click target for sighted users, but is annoying
+                when navigating by keyboard since it's a duplicate link to the same article.
+                So we make it non-focusable and hidden from screen readers.
+              */}}
+              <a href="{{ .RelPermalink }}" tabindex="-1" aria-hidden="true">
+                <img class="img-fluid"
+                     src="{{ .RelPermalink }}"
+                     width="{{ .Width }}"
+                     height="{{ .Height }}"
+                     alt="" />
+                  </a>
+            {{- end }}
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              </h3>
+              <p class="card-text">{{ .Description }}</p>
+            </div>
+          </div>
+        </div>
+      {{- end }}
+    </div>
+  </div>
+</div>

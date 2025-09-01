@@ -1,8 +1,11 @@
 ---
 guid: "urn:UUID:63b6f14e-9d38-4ec7-a2f6-cc27f1c70d5f"
-itemtype: Item/Page/Article
+type: article
 date: "2012-02-18T09:00:00-0400"
 title: "Django Settings: Three Things Conflated"
+keywords: ["django"]
+params:
+  cover: img/magic-pony-django.webp
 ---
 
 If you work on a large Django project, there's a good chance that you would describe
@@ -63,5 +66,4 @@ problem right now, just this one nugget of insight.
 
 What successful methods have you used to organize settings in large projects?
 
-[the twelve factor app]:
-  /technology//heroku-twelve-factor-app-architecting-high-velocity-web-operations.html
+[the twelve factor app]: https://12factor.net/

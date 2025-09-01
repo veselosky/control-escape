@@ -14,6 +14,8 @@ than just _shareware_. Open source means that the `source code` of the software 
 available to the users. To understand what this means, we\'ll need to take a little
 detour into how computer programs actually get made.
 
+<!--more-->
+
 ## How Computer Programs Are Made
 
 A computer program is a list of instructions given to a computer to make it perform a

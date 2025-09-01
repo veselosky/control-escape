@@ -16,6 +16,7 @@ system.
 Some ideas will seem very familiar, and others will seem completely alien, but with a
 good understanding of the Linux file system, you have the skill to avoid some of the
 most common problems experienced by new Linux users.
+<!--more-->
 
 ## What is a file system?
 

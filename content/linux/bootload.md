@@ -2,6 +2,8 @@
 type: article
 title: "Choosing a Boot Loader"
 date: "2011-06-04T21:57:51-0400"
+tags:
+  - outdated
 params:
   author: "Vince Veselosky"
   copyright: "© 2011 Vince Veselosky"
@@ -31,7 +33,7 @@ present. This makes it the loader of choice for Linux-only systems.
 
 LILO does have a few limitations, however, which means it is not perfect for everyone.
 For starters, LILO can install itself in two places on your hard drive: the _boot
-sector_ of a partition ([what's a partition?](lx-partition)), or the _master boot
+sector_ of a partition ([what's a partition?](/linux/lx-partition)), or the _master boot
 record_ of the hard drive. The master boot record is the place on your hard drive that
 your computer\'s BIOS looks for the _bootstrap_ program that will load your operating
 system. This can be LILO, or it can be the DOS (and Windows) boot loader. If there is no

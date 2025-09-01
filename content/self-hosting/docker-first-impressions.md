@@ -1,11 +1,13 @@
 ---
 title: "Docker First Impressions"
+type: article
 date: "2024-09-09"
 description: A first try at adopting Docker in my development workflow.
-draft: true
-tags:
+keywords:
   - devops
   - docker
+params:
+  cover: img/cargo-ship-dock.webp
 ---
 
 Docker has been around for many years now, and the ecosystem around "containers" has
@@ -86,7 +88,7 @@ indicate a version number for Python, and an operating system version it is inst
 within the container image.
 
 Opinions vary on which of these images to use. From what I've gathered, Alpine images
-are much smaller than others, but at the expensive of leaving out libraries that are
+are much smaller than others, but at the expense of leaving out libraries that are
 important and sometimes necessary for building Python packages, which can cause problems
 if your project has dependencies that use system libraries or compiled modules. The safe
 option appears to be to use the latest "slim" version, which gives you a Debian-based

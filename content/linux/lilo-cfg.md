@@ -6,6 +6,8 @@ description:
   systems."
 date: "2011-06-04T22:51:00-0400"
 keywords: "LILO, Linux"
+tags:
+  - outdated
 params:
   author: "Vince Veselosky"
   copyright: "© 2011 Vince Veselosky"
@@ -15,7 +17,7 @@ params:
 ## What is LILO?
 
 LILO is the LInux LOader, the most popular boot loader for Linux. (For some background
-on boot loaders, see [Choosing a Boot Loader](bootload)) It is used to load Linux into
+on boot loaders, see [Choosing a Boot Loader](/linux/bootload)) It is used to load Linux into
 memory and start the operating system. On a machine with multiple operating systems,
 LILO can be configured to boot the other systems as well.
 
@@ -136,7 +138,7 @@ before they will take effect. Failing to do so might cause LILO to be unable to 
 Linux!
 
 To apply changes, run the following command (you will need to be
-[SuperUser](users-groups#becoming-superuser)):
+[SuperUser](/linux/users-groups#becoming-superuser)):
 
     /sbin/lilo
 
@@ -158,7 +160,7 @@ see LILO as a virus!)
 
 To fix this, you just need to reinstall LILO. That means you have to boot into Linux
 some other way, either using Loadlin or a Linux boot floppy. (See
-[Choosing a Boot Loader](bootload)). At the Linux command prompt just type `/sbin/lilo`
+[Choosing a Boot Loader](/linux/bootload)). At the Linux command prompt just type `/sbin/lilo`
 as described under Applying Changes. When you reboot, LILO will be back where it
 belongs!
 

@@ -1,6 +1,7 @@
 ---
 type: article
 title: "Users and Groups"
+description: Learn how users, groups, and admin privileges keep your Linux system secure.
 date: "2024-06-07T16:20:00-0400"
 publishDate: "2011-06-03T22:53:15-0400"
 lastmod: "2024-06-07T16:20:00-0400"
@@ -21,6 +22,7 @@ deleting every file on the system.
 Understanding Linux user permissions is crucial for managing a secure and efficient
 system. This article will delve into the essentials of Linux user and group permissions,
 covering key concepts and configurations.
+<!--more-->
 
 ## Identity and Permissions
 
@@ -69,7 +71,7 @@ Because it is so dangerous to be logged in as root, you should never use this ac
 unless you have to. The root account is meant to be used by the System Administrator to
 perform certain duties which can be destructive and therefore should only be performed
 by an expert. Some examples are emptying log files, mounting and unmounting file systems
-(more on this later under [Getting to CD's and Floppies](lx-mounting)), installing or
+(more on this later under [Getting to CD's and Floppies](/linux/lx-mounting)), installing or
 removing programs, and creating or deleting user accounts.
 
 ## Becoming SuperUser

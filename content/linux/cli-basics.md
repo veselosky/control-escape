@@ -1,15 +1,15 @@
 ---
 type: article
 title: "Linux Command Line Basics"
-date: "2011-01-03T08:50:00-0500"
+description: A survival guide for working at the Linux command line.
+date: "2024-06-08T09:50:00-0400"
+dateCreated: "2011-01-03T08:50:00-0500"
 lastmod: "2024-06-08T09:50:00-0400"
 params:
   author: "Vince Veselosky"
   copyright: "2011 Vince Veselosky."
   contact: "<vince@control-escape.com>"
 ---
-
-# Linux Command Line Basics
 
 ## What is this \"shell\"?
 

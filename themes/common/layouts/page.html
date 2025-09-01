@@ -1,0 +1,5 @@
+{{ define "content" }}
+  {{- partial "article_text.html" . }}
+  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+  <!-- tpl: page.html -->
+{{ end }}

@@ -2,11 +2,10 @@
 type: article
 title: "Installing Software on Linux"
 description:
-  "How to install software on your Linux system. Describes the tools and commands you
-  will need, with specific references for debian,ubuntu, fedora, mandriva, and compiling
+  "How to install software on your Linux system. Detailed commands for debian, ubuntu, fedora, and compiling
   from source."
-date: "2011-06-03T22:52:56-0400"
-keywords: "install software,Linux,rpm,deb,tar,tgz"
+dateCreated: "2011-06-03T22:52:56-0400"
+date: "2025-08-23T10:52:56-0400"
 params:
   author: "Vince Veselosky"
   copyright: "© 2011 Vince Veselosky"
@@ -26,10 +25,10 @@ or a `program.zip` file. On a Mac a package is a `program.dmg` or a `program.sit
 In the Linux world, there are several kinds of packages, and each distribution has its
 own preferred package format.
 
-The standard Linux package format (according to the
+The standard Linux package format (according to the now-defunct
 [Linux Standard Base](http://en.wikipedia.org/wiki/Linux_Standard_Base)) is `RPM`. RPM
 is a packaging system originally developed by Red Hat and widely used in the Linux
-community. Distributions using it include Fedora, Mandriva, Red Hat (naturally), and
+community. Distributions using it include Fedora, Red Hat (naturally), and
 SUSE. An RPM package file normally will be named something like
 `program-version-other.rpm`
 
@@ -37,10 +36,10 @@ Another popular package format is `DEB`, the Debian software package. Debian pac
 and the Advanced Packaging Tool (APT) were the first to introduce several advanced
 features that are now common, such as automatic dependency resolution and signed
 packages. Debian packages are used by Debian GNU/Linux (naturally), and distributions
-based on it, including Ubuntu, Knoppix, and Mepis. A Debian package file normally will
+based on it, including Ubuntu and Linux Mint. A Debian package file normally will
 be named something like `program-version-other.deb`
 
-Remember, you will need to [become SuperUser](users-groups#becoming-superuser) to
+Remember, you will need to [become SuperUser](/linux/users-groups#becoming-superuser) to
 install software.
 
 ## Debian, Ubuntu: APT
@@ -71,7 +70,7 @@ at once. :
     apt-get update; apt-get upgrade
 
 For a more indepth `apt-get` tutorial and other resources, see
-[Managing Software with APT and dpkg](lx-swinstall-apt).
+[Managing Software with APT and dpkg](/linux/lx-swinstall-apt).
 
 ## Fedora, Red Hat: `yum`
 
@@ -95,29 +94,7 @@ You can also explicitly update a single package with:
     yum update ${packagename}
 
 For a more indepth `yum` tutorial and other resources, see
-[Managing Software with yum and rpm](lx-swinstall-yum).
-
-## Mandriva: `urpm`
-
-Mandriva Linux (formerly Mandrake and Connectiva) has a toolset similar to APT called
-`urpmi`. To install software:
-
-    urpmi ${packagename}
-
-To remove software:
-
-    urpme ${packagename}
-
-To update the local package database:
-
-    urpmi.update -a
-
-To install security updates and bug fixes:
-
-    urpmi --auto-select
-
-For a more indepth `yum` tutorial and other resources, see
-[Managing Software with urpm](lx-swinstall-urpm).
+[Managing Software with yum and rpm](/linux/lx-swinstall-yum).
 
 ## Tar Balls
 
@@ -138,11 +115,11 @@ This command will not install the software, it will only extract the archived fi
 is your job then to find the README file or INSTALL file and read its instructions for
 installation. If the archive contains binaries there will usually be a setup script
 (often called `install.sh`) that you must execute as
-[SuperUser](users-groups#becoming-superuser).
+[SuperUser](/linux/users-groups#becoming-superuser).
 
 Very often, software delivered in tar balls is not in executable form, but in source
 code, which must first be compiled before it can be installed. For more details on this,
-see [Installing Software from Source Code](lx-swinstall-tar).
+see [Installing Software from Source Code](/linux/lx-swinstall-tar).
 
 ## Other Systems
 

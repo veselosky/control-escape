@@ -1,0 +1,50 @@
+<article class="article-full">
+<header class="article-header">
+  <h1 class="article-title">{{ .Title }}</h1>
+  <p class="article-meta">{{ .Date.Format "January 2, 2006" }}</p>  
+</header>
+{{- if .Params.series }}
+    <section class="article-series-info mb-3">
+    {{ partial "article_series.html" . }}
+    </section>
+{{- end }}
+{{/*  Include a cover image if available  */}}
+{{- $img := partial "funcs/get_cover_image.html" . -}}
+{{- with $img }}
+  {{- $large := $img.Resize "960x" }}
+  <p>
+    <img class="img-fluid"
+      src="{{ $large.RelPermalink }}"
+      alt="{{ .Params.alt }}"
+      height="{{ $large.Height }}"
+      width="{{ $large.Width }}" />
+  </p>
+{{- end }}
+{{ .Content }}
+{{- if .Params.series }}
+  <footer class="article-footer">
+    {{- $series := index .Params.series 0 }}
+    {{- $pages := (index .Site.Taxonomies.series $series).Pages.ByDate }}
+    {{- $currentPage := . }}
+    {{- $nextPage := false }}
+    {{- $found := false }}
+    
+    {{- range $index, $page := $pages }}
+      {{- if $found }}
+        {{- $nextPage = $page }}
+        {{- break }}
+      {{- end }}
+      {{- if eq $page.RelPermalink $currentPage.RelPermalink }}
+        {{- $found = true }}
+      {{- end }}
+    {{- end }}
+    
+    {{- with $nextPage }}
+      <p>
+      Next in the series: <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </p>
+    {{- end }}
+    {{ partial "article_series.html" . }}
+  </footer>
+{{- end }}
+</article>

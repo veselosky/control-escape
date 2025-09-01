@@ -1,0 +1,34 @@
+img/cargo-ship-dock.webp: 
+  alt: A large cargo ship docked in a harbor at night
+  credit: |
+    Photo by <a href="https://unsplash.com/@hamburgmeinefreundin?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Wolfgang Weiser</a> 
+    on <a href="https://unsplash.com/photos/a-large-cargo-ship-in-a-harbor-at-night-lDJYHK4Qkpo?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+img/uv-girl.webp: 
+  alt: Cyber-chick with mirrored sunglasses backlit by blue and purple neon lights
+  credit: |
+    Photo by <a href="https://unsplash.com/@alipzn?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Ali Pazani</a> 
+    on <a href="https://unsplash.com/photos/woman-sitting-on-metal-stairs-with-lights-aVh3HrDerRE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+img/magic-pony-django.webp: 
+  alt: The magical Django Pony
+  credit: The magical <a href="https://djangopony.com/">Django Pony</a>.
+img/launch-platform-square.webp: 
+  alt: A rocket rising from a launch platform
+  credit: | 
+    Photo by <a href="https://unsplash.com/@spacex?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">SpaceX</a> 
+    on <a href="https://unsplash.com/photos/flying-rocket-on-air-at-daytime-t3HVjP4xNsg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+img/launch-platform.webp: 
+  alt: A rocket rising from a launch platform
+  credit: | 
+    Photo by <a href="https://unsplash.com/@spacex?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">SpaceX</a> 
+    on <a href="https://unsplash.com/photos/flying-rocket-on-air-at-daytime-t3HVjP4xNsg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+img/self-cloud.webp:
+  alt: A man performing a one-handed handstand in front of a blue sky with white clouds
+  credit: | 
+    Photo by <a href="https://unsplash.com/@ianflores23?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Ian Flores</a> 
+    on <a href="https://unsplash.com/photos/unknown-person-planking-outdoors-cl7zEjr7-gk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+img/making-websites.webp:
+  alt: A person designing web flows with pen and paper
+  credit: |
+    Photo by <a href="https://unsplash.com/@kellysikkema?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Kelly Sikkema</a> 
+    on <a href="https://unsplash.com/photos/yellow-click-pen-on-white-printer-paper-gcHFXsdcmJE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      

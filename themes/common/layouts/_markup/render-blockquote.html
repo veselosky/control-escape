@@ -1,0 +1,45 @@
+{{- $emojis := dict
+  "caution" ":exclamation:"
+  "important" ":information_source:"
+  "note" ":information_source:"
+  "tip" ":bulb:"
+  "warning" ":warning:"
+-}}
+{{- $bootstrapClass := dict
+  "caution" "danger"
+  "important" "primary"
+  "note" "info"
+  "tip" "success"
+  "warning" "warning"
+-}}
+{{- if eq .Type "alert" }}
+  <blockquote class="alert alert-{{ index $bootstrapClass .AlertType }}">
+    <p class="alert-heading h4">
+      {{- transform.Emojify (index $emojis .AlertType) }}
+      {{- with .AlertTitle }}
+        {{ . }}
+      {{- else }}
+        {{ or (i18n .AlertType) (title .AlertType) }}
+      {{- end }}
+    </p>
+    {{ .Text }}
+  </blockquote>
+{{- else if (or .Attributes.caption .Attributes.cite) }}
+<figure>
+  <blockquote class="blockquote"{{ with .Attributes.citeUrl }} cite="{{ . |safeURL }}"{{ end }}>
+    {{ .Text }}
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    &mdash; {{ with .Attributes.caption }}
+      {{- . }}
+    {{- end }} 
+    {{- with .Attributes.cite -}}
+      <cite>{{ . }}</cite>
+    {{- end }}
+  </figcaption>
+</figure>
+{{- else }}
+  <blockquote class="blockquote">
+    {{ .Text }}
+  </blockquote>
+{{- end }}

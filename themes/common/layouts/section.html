@@ -1,0 +1,23 @@
+{{ define "precontent" }}
+  <div class="precontent">
+    {{- partial "article_text.html" . }}
+  </div>
+{{ end }}
+{{- define "content" }}
+  {{- $outdated := where .Pages "Params.tags" "intersect" (slice "outdated") }}
+  {{- $pages := (complement $outdated .Pages) }}
+  {{- if eq (len $pages) 0 }}
+    <p>{{- i18n "no_articles_found" }}</p>
+  {{- else }}
+    <h2 class="border-bottom">{{ i18n "Recent Articles" }}</h2>
+    {{- $paginator := .Paginate $pages }}
+    {{/* .Paginator returns nil if there is no second page */}}
+    {{- if eq $paginator nil }}
+     {{ partial "article_list_blog.html" $pages -}}
+    {{- else }}
+      {{ partial "article_list_blog.html" $paginator.Pages -}}
+      {{ partial "pagination.html" . -}}
+    {{- end }}
+    
+  {{ end }}
+{{- end }}
