@@ -1,0 +1,43 @@
+control-escape.com {
+	# Redirect the apex domain to the www subdomain, which we treat as canonical for the website.
+	redir https://www.control-escape.com{uri}
+}
+
+www.control-escape.com {
+	root * /var/www/control-escape # Set working dir for this site (within the Caddy container)
+	encode zstd gzip # Enable compression
+
+	# Enable logging. Access logs go to stderr by default. This is what you want for
+	# containerized applications, as logs are automatically collected by Docker/k8s.
+	log
+
+	# Common redirects
+	redir /feed/ /index.xml 302
+
+	# Redirect old "ugly urls" naming scheme to "pretty urls" when they've been moved.
+	@ugly_to_pretty {
+		# Match paths that 1. Match this regex
+		path_regexp html_path ^(.+)\.html$
+		# and 2. Don't exist
+		not file {path}
+		# but 3. replacing .html with /index.html yields an existing file
+		file {re.html_path.1}/index.html
+	}
+	handle @ugly_to_pretty {
+		# then redirect to the "pretty url"
+		redir {re.html_path.1}/ 301
+	}
+
+	# TODO Proxy forms and such to Django backend
+	# handle /admin/* {
+	# 	reverse_proxy http://django:8000
+	# }
+
+	file_server
+
+	handle_errors 404 {
+		# Fallback: serve custom 404 page
+		rewrite * /404.html
+		file_server
+	}
+}
