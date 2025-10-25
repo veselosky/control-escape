@@ -16,17 +16,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     {{- block "styles" . }}
-      <link 
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" 
-        rel="stylesheet" 
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" 
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
         crossorigin="anonymous"
       />
       {{ with resources.Get "css/generic.css" | resources.Minify | resources.Fingerprint -}}
         <link rel="stylesheet" href="{{ .Permalink }}" />
       {{ end -}}
+      <style>
+        /* Atkinson Hyperlegible Next for body text */
+        @font-face {
+          font-display: swap;
+          font-family: 'Atkinson Hyperlegible Next';
+          font-style: normal;
+          font-weight: 400;
+          src: url('/fonts/AtkinsonHyperlegibleNext-Regular.woff2') format('woff2');
+        }
+        @font-face {
+          font-display: swap;
+          font-family: 'Atkinson Hyperlegible Next';
+          font-style: italic;
+          font-weight: 400;
+          src: url('/fonts/AtkinsonHyperlegibleNext-RegularItalic.woff2') format('woff2');
+        }
+        @font-face {
+          font-display: swap;
+          font-family: 'Atkinson Hyperlegible Next';
+          font-style: normal;
+          font-weight: 700;
+          src: url('/fonts/AtkinsonHyperlegibleNext-Bold.woff2') format('woff2');
+        }
+        @font-face {
+          font-display: swap;
+          font-family: 'Atkinson Hyperlegible Next';
+          font-style: italic;
+          font-weight: 700;
+          src: url('/fonts/AtkinsonHyperlegibleNext-BoldItalic.woff2') format('woff2');
+        }
+        /* Atkinson Hyperlegible Mono for code and other monospace text */
+        @font-face {
+          font-display: swap;
+          font-family: 'Atkinson Hyperlegible Mono';
+          font-style: normal;
+          font-weight: 400;
+          src: url('/fonts/AtkinsonHyperlegibleMono-Regular.woff2') format('woff2');
+        }
+        @font-face {
+          font-display: swap;
+          font-family: 'Atkinson Hyperlegible Mono';
+          font-style: italic;
+          font-weight: 400;
+          src: url('/fonts/AtkinsonHyperlegibleMono-RegularItalic.woff2') format('woff2');
+        }
+        @font-face {
+          font-display: swap;
+          font-family: 'Atkinson Hyperlegible Mono';
+          font-style: normal;
+          font-weight: 700;
+          src: url('/fonts/AtkinsonHyperlegibleMono-Bold.woff2') format('woff2');
+        }
+        @font-face {
+          font-display: swap;
+          font-family: 'Atkinson Hyperlegible Mono';
+          font-style: italic;
+          font-weight: 700;
+          src: url('/fonts/AtkinsonHyperlegibleMono-BoldItalic.woff2') format('woff2');
+        }
+        /* Set CSS variables for Bootstrap to use the Atkinson fonts */
+        :root, [data-bs-theme="light"], [data-bs-theme="dark"] {
+          --atkinson-font: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+          --bs-font-sans-serif: 'Atkinson Hyperlegible Next', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+          --bs-font-monospace: 'Atkinson Hyperlegible Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+        html {
+          font-size: 112.5%; /* roughly 18px if browser default is 16px */
+          font-size: 125%; /* roughly 20px if browser default is 16px */
+        }
+      </style>
     {{ end -}}
-    
+
     {{- $site := .Site -}}
     {{- $homepage := $site.GetPage "home" -}}
     <!-- Always link to the main RSS feed -->
@@ -40,7 +110,7 @@
         <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" title="{{ $sectionPage.Title }} RSS ({{ $site.Title }})" href="{{ .Permalink }}" />
       {{ end -}}
     {{ end -}}
-    
+
     {{ block "opengraph" . -}}
       {{ partial "opengraph.html" . -}}
     {{ end -}}
@@ -59,7 +129,7 @@
         {{- partial (default "header.html" (.Param "header_template")) . }}
       </header>
     {{- end }}
-    <main id="main" role="main" 
+    <main id="main" role="main"
       class="main d-flex flex-column align-items-center justify-content-center {{ default "container" (.Param "bootstrap_container_class") }}"
       >
     {{- block "precontent" . }}
@@ -67,10 +137,10 @@
         {{ partial (default "empty.html" (.Param "precontent_template")) . }}
       </div>
     {{- end }}
-    
+
     {{- block "content" . }}
     {{- end }}
-    
+
     {{- block "postcontent" . }}
       <div class="postcontent {{ default "container" (.Param "bootstrap_container_class") }}">
         {{ partial (default "empty.html" (.Param "postcontent_template")) . }}
@@ -90,9 +160,9 @@
       </footer>
     {{- end }}
     {{- block "bootstrap_js" . }}
-      <script 
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" 
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"
       ></script>
     {{- end }}
