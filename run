@@ -30,6 +30,14 @@ WHITE="$(tput setaf 7)"
 #######################################################################
 
 #######################################################################
+function audit { ## Run code quality checks
+    # See https://gohugo.io/troubleshooting/audit/
+    HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=true \
+    HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS=true \
+    hugo && grep -inorE "<\!-- raw HTML omitted -->|ZgotmplZ|\[i18n\]|\(<nil>\)|(&lt;nil&gt;)|hahahugo" public/
+}
+
+#######################################################################
 function build { ## Build the production site
     # Note: Django also uses /var/www/ for static files and media.
     # Building separately seems safer for now.
@@ -45,6 +53,12 @@ function help { ## Display usage for this application
         sed -e 's/function //' | \
         sort | \
         awk 'BEGIN {FS = "{.*?## "}; {printf "\033[93m%-30s\033[92m %s\033[0m\n", $1, $2}'
+}
+
+#######################################################################
+function lighthouse { ## Audit the site for accessibility, SEO, performance, and best practices
+    lighthouse http://localhost:1313 --output html --output-path ./lighthouse-report.html --chrome-flags="--headless"
+    echo "Lighthouse report generated at ./lighthouse-report.html"
 }
 
 #######################################################################
