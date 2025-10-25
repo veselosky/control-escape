@@ -29,13 +29,12 @@ Renders a menu for the given menu ID.
       {{- $attrs = merge $attrs (dict "class" "nav-link ancestor" "aria-current" "true") }}
     {{- end }}
     {{- $name := .Name }}
-    {{- with .Identifier }}
-      {{- with T . }}
-        {{- $name = . }}
-      {{- end }}
+    {{- $t := i18n $name }}
+    {{- if and $t (ne $t (printf "[i18n] %s" $name)) }}
+      {{- $name = $t }}
     {{- end }}
     <li class="nav-item">
-      <a 
+      <a
         {{- range $k, $v := $attrs }}
           {{- with $v }}
             {{- printf " %s=%q" $k $v | safeHTMLAttr }}
