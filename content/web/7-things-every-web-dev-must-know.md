@@ -14,6 +14,7 @@ The web isn’t magic. It runs on a handful of simple, powerful ideas that every
 That’s fine… until things break. Until your site slows down, your users can’t reach it, or your code becomes an unmaintainable mess.
 
 This article is your roadmap back to the fundamentals. If you truly want to master web development — not just the flavor of the month — you must know these seven core technologies.
+<!--more-->
 
 ## 1️⃣ HTML — Structure and Meaning
 
