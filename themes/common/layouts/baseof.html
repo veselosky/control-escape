@@ -153,8 +153,12 @@
         {{ block "footer_credits" . }}
           {{- $cover := .Param "cover" | default "img/cover.jpg" -}}
           {{- with (index site.Data.imageMeta $cover) }}
-            <p class="image-credit"><small>Cover image: {{ .credit | safeHTML }}</small></p>
+            <p class="image-credit mb-0"><small>Cover image: {{ .credit | safeHTML }}</small></p>
           {{- end }}
+          {{- $buildDate := now }}
+          <p class="build-status text-muted"><small>Site built on <time title="{{ $buildDate.Format "2006-01-02T15:04:05Z07:00" }}"
+            datetime="{{ $buildDate.Format "2006-01-02T15:04:05Z07:00" }}">{{ $buildDate.Format "January 2, 2006" }}</time>
+            with <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a>.</small></p>
         {{- end }}
       </footer>
     {{- end }}
