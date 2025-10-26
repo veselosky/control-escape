@@ -1,8 +1,18 @@
-Recent Articles: 
+Recent Articles:
   other: "Recent Articles"
-Continue Reading: 
-  other: "Continue Reading"
-part_of_the_series: 
+Continue reading:
+  other: "Continue reading"
+part_of_the_series:
   other: "Part of the series: {{ .Series }}"
-no_articles_found: 
+no_articles_found:
   other: "No articles found."
+caution:
+  other: "Caution"
+warning:
+  other: "Warning"
+note:
+  other: "Note"
+tip:
+  other: "Tip"
+important:
+  other: "Important"

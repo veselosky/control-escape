@@ -1,31 +1,26 @@
 /* article_list_album.html
-Height calculations for the H3 and P tags are based on number of lines of text
+To prevent huge blocks of trailing whitespace in cards, we limit output to 4
+lines, at which text will be truncated with an ellipsis. (This isn't much of a problem
+at normal font sizes, but when users increase font size for accessibility, it can
+become an issue.)
+
+Height calculations for the P tags are based on number of lines of text
 we want displayed (1em * line height for each line). We take advantage of the
 CSS vars set by Bootstrap 5.2+.
-The ::after trick fades the text at the end in case of overflow.
-https://css-tricks.com/line-clampin/
+
+As of 2025-10-25 line-clamp is not well supported, but curiously the -webkit- version
+works in all major browsers (when paired with display: -webkit-box and
+-webkit-box-orient: vertical;).  ¯\_(ツ)_/¯
+See also this hack: https://css-tricks.com/line-clampin/
 */
-.album .card-body h3 {
-  height: calc(2em * var(--bs-body-line-height));
-}
 .album .card-body p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
   height: calc(4em * var(--bs-body-line-height));
   overflow: hidden;
   position: relative;
-}
-.album .card-body p::after {
-  content: "";
-  text-align: right;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 70%;
-  height: calc(1em * var(--bs-body-line-height));
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 1) 100%
-  );
 }
 .album .card {
   max-width: 400px;
@@ -35,5 +30,10 @@ For readability, line length for text blocks should be restricted to ~80 chars.
 https://baymard.com/blog/line-length-readability
 */
 article{
-  max-width: 80ch;
+  max-width: 72ch;
+}
+
+/* Use balanced wrapping for headlines */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
 }
