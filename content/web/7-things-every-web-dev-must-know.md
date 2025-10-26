@@ -49,7 +49,7 @@ Stop building your own form elements in JavaScript frameworks!
 **Easy Performance Wins**
 * `async` and `defer` attributes prevent scripts from blocking page render.
 * Images can have `loading="lazy"` for the same reason.
-* `<link rel="preload">` ensures important assets load early (but don't over-user it!)
+* `<link rel="preload">` ensures important assets load early (but don't overuse it!)
 
 Always choose the correct element for the job: headings for structure, lists for related items, forms for input, tables for tabular data.
 
