@@ -16,6 +16,11 @@ hugo.linux
 # Temporary lock file while building
 /.hugo_build.lock
 
+# Outputs from my audit scripts
+.hugo_build_issues.txt
+.hugo_build.out
+.hugo_build.err
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -208,4 +213,3 @@ pyrightconfig.json
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,hugo
-
