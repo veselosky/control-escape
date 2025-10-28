@@ -8,6 +8,7 @@ title: "Control-Escape"
 
 DefaultContentLanguage: "en"
 enableRobotsTXT: true
+enableEmoji: true
 
 SectionPagesMenu: "main"
 menus:
