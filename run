@@ -34,7 +34,13 @@ function audit { ## Run code quality checks
     # See https://gohugo.io/troubleshooting/audit/
     HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=true \
     HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS=true \
-    hugo || { printf "%b %s\n" "${RED}✖${NORMAL}" "Hugo build failed!"; return 1; }
+    hugo > .hugo_build.out 2> .hugo_build.err \
+    --printI18nWarnings \
+    --printPathWarnings \
+    --printUnusedTemplates \
+    --printMemoryUsage \
+    --templateMetrics \
+    --templateMetricsHints || { printf "%b %s\n" "${RED}✖${NORMAL}" "Hugo build failed!"; return 1; }
 
     # Search the generated public/ for known Hugo build warnings/markers.
     # Capture output (if any), print it, and save to a file when issues exist.
