@@ -10,8 +10,14 @@ PATH=./node_modules/.bin:$PATH
 # Set some commonly used globals
 #######################################################################
 BASE_DIR=$(cd `dirname $0`; pwd)
-# Currently target 3.8
-BASE_PYTHON=`which python3.8 || which python3 || which python`
+# As a security precaution, ensure the BASE_DIR is not empty, and that
+# the path it refers to is writable by the current user.
+if [ -z "$BASE_DIR" ] || [ ! -w "$BASE_DIR" ]; then
+    echo "Error: BASE_DIR is not set or not writable: '$BASE_DIR'"
+    exit 1
+fi
+# Target 3.13, fallback to 3.x, then python
+BASE_PYTHON=`which python3.13 || which python3 || which python`
 PROJECT_NAME=`basename "$BASE_DIR"`
 
 # Some ANSI colors for pretty messages
@@ -61,12 +67,26 @@ function audit { ## Run code quality checks
 }
 
 #######################################################################
-function build { ## Build the production site
+function build { ## Build the static site (to public/)
     # Note: Django also uses /var/www/ for static files and media.
     # Building separately seems safer for now.
-    hugo build --minify && cp -r public/* var/www/
+    hugo build --minify --cleanDestinationDir --gc --environment production
 }
 
+#######################################################################
+function deploy { ## Deploy the site to the production server
+    # Check the ownership of the var/www/ directory. If owner is not
+    # the current user, use sudo to copy files as the owner.
+    TARGET="$BASE_DIR/var/www/"
+    OWNER=$(stat -c '%U' $TARGET)
+    if [ "$OWNER" != "$USER" ]; then
+        echo "Deploying site with sudo as $OWNER owns $TARGET"
+        sudo -u "$OWNER" cp -r public/* $TARGET
+    else
+        echo "Deploying site to $TARGET as $USER"
+        cp -r public/* $TARGET
+    fi
+}
 #######################################################################
 function help { ## Display usage for this application
     echo "$0 <task> <args>"
@@ -76,12 +96,27 @@ function help { ## Display usage for this application
         sed -e 's/function //' | \
         sort | \
         awk 'BEGIN {FS = "{.*?## "}; {printf "\033[93m%-30s\033[92m %s\033[0m\n", $1, $2}'
+    echo "VARIABLES:"
+    echo "  BASE_DIR      : $BASE_DIR"
+    echo "  BASE_PYTHON   : $BASE_PYTHON"
+    echo "  PROJECT_NAME  : $PROJECT_NAME"
+    echo ""
+    echo "For production deployment, pull the desired branch from git, run 'build' then 'deploy'."
 }
 
 #######################################################################
 function lighthouse { ## Audit the site for accessibility, SEO, performance, and best practices
-    lighthouse http://localhost:1313 --output html --output-path ./lighthouse-report.html --chrome-flags="--headless"
-    echo "Lighthouse report generated at ./lighthouse-report.html"
+    # If lighthouse executable is on the path, use it, otherwise check if npx is available
+    REPORT="$BASE_DIR/var/lighthouse-report.html"
+    if command -v lighthouse &> /dev/null; then
+        lighthouse http://localhost:1313 --output html --output-path "$REPORT" --chrome-flags="--headless"
+    elif command -v npx &> /dev/null; then
+        npx lighthouse http://localhost:1313 --output html --output-path "$REPORT" --chrome-flags="--headless"
+    else
+        echo "Error: lighthouse or npx is not installed."
+        exit 1
+    fi
+    echo "Lighthouse report generated at $REPORT"
 }
 
 #######################################################################
