@@ -10,6 +10,7 @@ params:
   author: "Vince Veselosky"
   copyright: "© 2011 Vince Veselosky"
   contact: "<vince@control-escape.com>"
+  outdated: true
 ---
 
 > [!WARNING]

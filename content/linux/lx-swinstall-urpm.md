@@ -6,6 +6,7 @@ tags:
   - outdated
 params:
   contact: "<vince@control-escape.com>"
+  outdated: true
 ---
 
 Mandriva\'s `urpm` (\'User RPM\') tackles several weaknesses of the lower-level `rpm`

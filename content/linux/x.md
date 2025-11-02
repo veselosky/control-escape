@@ -9,6 +9,7 @@ tags:
   - outdated
 params:
   author: "Vince Veselosky"
+  outdated: true
 ---
 > [!WARNING]
 > This page is outdated and is retained for historical purposes only.
