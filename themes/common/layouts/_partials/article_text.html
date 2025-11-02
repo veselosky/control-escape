@@ -1,4 +1,4 @@
-<article class="article-full" data-pagefind-body>
+<article class="article-full"{{ if not .Params.outdated }} data-pagefind-body{{ end }}>
 <header class="article-header">
   <h1 class="article-title">{{ .Title }}</h1>
   <p class="article-meta">{{ .Date.Format "January 2, 2006" }}</p>
