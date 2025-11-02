@@ -140,7 +140,7 @@
     {{ end }}
     {{ block "pagefind_js" . }}
       <script src="/pagefind/pagefind-ui.js" defer></script>
-      <script defer>
+      <script>
         window.addEventListener('DOMContentLoaded', (event) => {
             new PagefindUI({ element: "#search", showSubResults: true });
         });
