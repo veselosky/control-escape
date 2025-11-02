@@ -1,4 +1,3 @@
-{{- $section := .CurrentSection }}
 {{- $cover := .Param "cover" | default "img/cover.jpg" -}}
-{{- $img := or (.Resources.Get $cover) ($section.Resources.Get $cover) (resources.Get $cover) -}}
+{{- $img := or (.Resources.Get $cover) (resources.Get $cover) -}}
 {{- return $img }}
