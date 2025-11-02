@@ -87,13 +87,14 @@ function deploy { ## Deploy the site to the production server
     # Check the ownership of the var/www/ directory. If owner is not
     # the current user, use sudo to copy files as the owner.
     TARGET="$BASE_DIR/var/www/"
-    OWNER=$(stat -c '%U' $TARGET)
-    if [ "$OWNER" != "$USER" ]; then
-        echo "Deploying site with sudo as $OWNER owns $TARGET"
-        sudo -u "$OWNER" cp -r public/* $TARGET
-    else
+    # Portable way to get directory owner (works on GNU and BSD/macOS)
+    OWNER=$(ls -ld "$TARGET" | awk '{print $3}')
+    if [ "$OWNER" == "$USER" ]; then
         echo "Deploying site to $TARGET as $USER"
         cp -r public/* $TARGET
+    else
+        echo "Deploying site with sudo as $OWNER owns $TARGET"
+        sudo -u "$OWNER" cp -r public/* $TARGET
     fi
 }
 #######################################################################
