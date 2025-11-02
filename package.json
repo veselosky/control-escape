@@ -1,0 +1,24 @@
+{
+  "name": "control-escape",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Control-Escape is an educational site that teaches you how to **own your platform** by taking control of your technology and escaping vendor lock-in.",
+  "homepage": "https://github.com/veselosky/control-escape#readme",
+  "bugs": {
+    "url": "https://github.com/veselosky/control-escape/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veselosky/control-escape.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Vince Veselosky",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "pagefind": "^1.4.0"
+  }
+}

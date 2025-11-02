@@ -13,7 +13,7 @@
       <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
         {{- $img := resources.Get "img/launch-platform-square.webp" }}
         {{- with $img.Resize "540x540" }}
-        <img class="rounded-lg-3" src="{{ .RelPermalink }}" alt="A rocket rising from a launch platform" width="540">
+        <img class="rounded-lg-3" src="{{ .RelPermalink }}" alt="A rocket rising from a launch platform" width="540" fetchpriority="high">
         {{- end }}
       </div>
     </div>

@@ -25,6 +25,7 @@
       {{ with resources.Get "css/generic.css" | resources.Minify | resources.Fingerprint -}}
         <link rel="stylesheet" href="{{ .Permalink }}" />
       {{ end -}}
+      <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
       <style>
         /* Atkinson Hyperlegible Next for body text */
         @font-face {
@@ -119,6 +120,33 @@
     {{ block "canonical_url" . -}}
       <link rel="canonical" href="{{ .Permalink }}" />
     {{ end -}}
+    {{ block "favicon" . }}
+      {{/* Favicon links from https://realfavicongenerator.net/ - only include if file exists in static/ */}}
+      {{- if fileExists "static/favicon-96x96.png" }}
+        <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+      {{- end }}
+      {{- if fileExists "static/favicon.svg" }}
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      {{- end }}
+      {{- if fileExists "static/favicon.ico" }}
+        <link rel="shortcut icon" href="/favicon.ico" />
+      {{- end }}
+      {{- if fileExists "static/apple-touch-icon.png" }}
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      {{- end }}
+      {{- if fileExists "static/site.webmanifest" }}
+        <link rel="manifest" href="/site.webmanifest" />
+      {{- end }}
+    {{ end }}
+    {{ block "pagefind_js" . }}
+      <script src="/pagefind/pagefind-ui.js" defer></script>
+      <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            new PagefindUI({ element: "#search", showSubResults: true });
+        });
+      </script>
+    {{ end }}
+
     {{ block "extra_head" . -}}{{ end -}}
   </head>
   <body class="p-3 d-flex flex-column align-items-center justify-content-center" data-bs-theme="light">

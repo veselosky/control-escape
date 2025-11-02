@@ -9,6 +9,7 @@ tags:
   - outdated
 params:
   author: "Vince Veselosky"
+  outdated: true
 ---
 
 > [!WARNING]
@@ -80,7 +81,7 @@ available for all major distributions by the time you read this. Check the
 [GNOME web site](http://www.gnome.org) for release announcements and installation
 instructions.
 
-Currently I am running the [K Desktop Environment](http://www.kde.org/) version 1.1. 
+Currently I am running the [K Desktop Environment](http://www.kde.org/) version 1.1.
 KDE is a vast improvement over a
 standard X setup. It installs quite easily. It looks very nice and works pretty much like you\'d expect, borrowing its
 shortcut keys from Windows rather than emacs as many other Linux programs do. KDE has a

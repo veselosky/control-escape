@@ -10,12 +10,13 @@ params:
   copyright: "© 2011 Vince Veselosky"
   contact: "<vince@control-escape.com>"
   orphan: "True"
+  outdated: true
 ---
 
 > [!WARNING]
 > This page is outdated and is retained for historical purposes only.
 
-> [!NOTE] 
+> [!NOTE]
 > Corel no longer makes Wordperfect for Linux.
 <!--more-->
 

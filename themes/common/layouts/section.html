@@ -4,8 +4,7 @@
   </div>
 {{ end }}
 {{- define "content" }}
-  {{- $outdated := where .Pages "Params.tags" "intersect" (slice "outdated") }}
-  {{- $pages := (complement $outdated .Pages) }}
+  {{- $pages := where .Pages "Params.outdated" "ne" true }}
   {{- if eq (len $pages) 0 }}
     <p>{{- i18n "no_articles_found" }}</p>
   {{- else }}
@@ -18,6 +17,5 @@
       {{ partial "article_list_blog.html" $paginator.Pages -}}
       {{ partial "pagination.html" . -}}
     {{- end }}
-    
   {{ end }}
 {{- end }}

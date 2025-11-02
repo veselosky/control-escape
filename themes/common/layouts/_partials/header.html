@@ -3,6 +3,7 @@
     <span class="fs-4">{{ .Site.Params.brand | default .Site.Title }}</span>
   </a>
   <div class="d-flex flex-wrap justify-content-center mb-3 mb-md-0">
-  {{ partial "menu.html" (dict "menuID" "main" "page" . "navClass" "nav-underline") }}
+    {{ partial "menu.html" (dict "menuID" "main" "page" . "navClass" "nav-underline") }}
   </div>
 </div>
+<div id="search"></div>
