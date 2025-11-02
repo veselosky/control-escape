@@ -25,6 +25,7 @@
       {{ with resources.Get "css/generic.css" | resources.Minify | resources.Fingerprint -}}
         <link rel="stylesheet" href="{{ .Permalink }}" />
       {{ end -}}
+      <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
       <style>
         /* Atkinson Hyperlegible Next for body text */
         @font-face {
@@ -137,6 +138,15 @@
         <link rel="manifest" href="/site.webmanifest" />
       {{- end }}
     {{ end }}
+    {{ block "pagefind_js" . }}
+      <script src="/pagefind/pagefind-ui.js" defer></script>
+      <script defer>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            new PagefindUI({ element: "#search", showSubResults: true });
+        });
+      </script>
+    {{ end }}
+
     {{ block "extra_head" . -}}{{ end -}}
   </head>
   <body class="p-3 d-flex flex-column align-items-center justify-content-center" data-bs-theme="light">

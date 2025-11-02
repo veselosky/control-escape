@@ -79,6 +79,7 @@ function build { ## Build the static site (to public/)
     # Note: Django also uses /var/www/ for static files and media.
     # Building separately seems safer for now.
     hugo build --minify --cleanDestinationDir --gc --environment production
+    npx pagefind --site public/
 }
 
 #######################################################################
