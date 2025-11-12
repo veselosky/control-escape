@@ -3,7 +3,7 @@ title: Installing Hugo Static Site Generator
 date: 2025-11-08T15:01:05-05:00
 tags:
   - hugo
-description: ""
+description: Learn how to install the Hugo Static Site Generator on Windows, macOS, and Linux for fast, flexible website creation.
 type: article
 draft: true
 ---
