@@ -20,6 +20,7 @@ Django makes a distinction between "static" files and "media" files. Static file
 Although they can be handled similarly, in this article, we will focus on static files.
 
 ## TL;DR Configuring static files correctly in production
+For a working example project with code you can crib from, see the [Django staticfiles example repository](https://github.com/veselosky/django-staticfiles-example).
 
 ### Using S3-compatible object storage for static files (recommended)
 ```python
@@ -58,7 +59,7 @@ STORAGES = {
     },
     # Static file storage for collected STATIC files
     "staticfiles": {
-        "BACKEND": "storages.backends.s3.S3ManifestStaticStorage",
+        "BACKEND": "myproject.storage.ReleaseSpecificManifestS3Storage",
         "OPTIONS": {
             "access_key": AWS_S3_ACCESS_KEY_ID,
             "secret_key": AWS_S3_SECRET_ACCESS_KEY,
@@ -70,7 +71,10 @@ STORAGES = {
     },
 }
 # STATIC_URL MUST end in a slash!
-STATIC_URL = f"https://{CUSTOM_DOMAIN}/static/" if CUSTOM_DOMAIN else f"https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/"
+if CUSTOM_DOMAIN:
+    STATIC_URL = f"https://{CUSTOM_DOMAIN}/static/"
+else:
+    STATIC_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/"
 ```
 
 ```python
@@ -98,15 +102,19 @@ def git_hash_release_id():
 class ReleaseSpecificManifestS3Storage(S3ManifestStaticStorage):
     def __init__(self, *args, **kwargs):
         # Determine the release ID to use for the manifest file location.
+        msg = (
+            "release_id_strategy or release_id is required"
+            " for ReleaseSpecificManifestS3Storage"
+        )
         release_id = kwargs.pop("release_id", None)
         release_id_strategy_path = kwargs.pop("release_id_strategy", None)
         if not release_id:
             if not release_id_strategy_path:
-                raise ImproperlyConfigured("release_id_strategy or release_id is required for ReleaseSpecificManifestS3Storage")
+                raise ImproperlyConfigured(msg)
             release_id_strategy = import_string(release_id_strategy_path)
             release_id = release_id_strategy()
 
-        # Set up the manifest storage to use a subdirectory named after the release ID
+        # Set up manifest storage to use a subdirectory named by the release ID
         # otherwise using all the same S3 settings as the main storage.
         opts = kwargs.copy() # copy to avoid modifying original
         opts["location"] = os.path.join(kwargs.get("location", ""), release_id)
@@ -156,7 +164,8 @@ STATIC_URL = '/static/'
 # myproject/storage.py
 import os.path
 from django.conf import settings
-from django.contrib.staticfiles.storage import StaticFilesStorage, ManifestStaticFilesStorage
+from django.contrib.staticfiles.storage import StaticFilesStorage, \
+    ManifestStaticFilesStorage
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.module_loading import import_string
 
@@ -175,16 +184,22 @@ def git_hash_release_id():
 class ReleaseSpecificManifestStaticFilesStorage(ManifestStaticFilesStorage):
     def __init__(self, *args, **kwargs):
         # Determine the release ID to use for the manifest file location.
+        msg = (
+            "release_id_strategy or release_id is required"
+            " for ReleaseSpecificManifestStaticFilesStorage"
+        )
         release_id = kwargs.pop("release_id", None)
         release_id_strategy_path = kwargs.pop("release_id_strategy", None)
         if not release_id:
             if not release_id_strategy_path:
-                raise ImproperlyConfigured("release_id_strategy or release_id is required for ReleaseSpecificManifestStaticFilesStorage")
+                raise ImproperlyConfigured(msg)
             release_id_strategy = import_string(release_id_strategy_path)
             release_id = release_id_strategy()
 
-        # Set up the manifest storage to use a subdirectory named after the release ID
-        manifest_storage = StaticFilesStorage(location=os.path.join(self.location, release_id))
+        # Set up manifest storage to use a subdirectory named by the release ID
+        manifest_storage = StaticFilesStorage(
+            location=os.path.join(self.location, release_id)
+        )
         super().__init__(*args, manifest_storage=manifest_storage, **kwargs)
 ```
 
@@ -202,7 +217,7 @@ During development, this architectural assumption is largely hidden from the dev
 
 In production, however, the `staticfiles` app's purpose becomes clear. It provides a way to collect all static files from various apps and locations into a single directory, which can then be served by a dedicated web server.
 
-### How to use `staticfiles` in development and production
+### Using `staticfiles` in development
 To use Django's `staticfiles` app, you need to add it to your `INSTALLED_APPS` in your `settings.py` file (already included in the default Django project template):
 
 ```python
@@ -221,3 +236,45 @@ STATICFILES_DIRS = [
     BASE_DIR / "frontend" / "dist",
 ]
 ```
+
+There's another setting that's relevant, although you probably will never need to touch it: `STATICFILES_FINDERS`. This setting defines the mechanisms Django uses to find static files. The default includes two finders: `FileSystemFinder`, which searches the directories in `STATICFILES_DIRS`, and `AppDirectoriesFinder`, which searches the "static" subdirectory of each app in your `INSTALLED_APPS`.
+
+In development, that's all you need to do. The `staticfiles` app will automatically serve static files from the specified directories when you run the development server (when `DEBUG` is `True`).
+
+### Collecting static files for production
+When you're ready to deploy your Django application to production, you need to collect all static files into a single directory that your web server can serve. This is done using the `collectstatic` management command:
+
+```bash
+python manage.py collectstatic --noinput
+```
+
+This command will gather all static files from the locations specified in `STATICFILES_DIRS` and from each app's "static" subdirectory, and copy them into the directory specified by the `STATIC_ROOT` setting (when using a `FileSystemStorage` backend, see more about storages below).
+
+### Serving static files in production
+There are three common methods of serving static files in production:
+
+1. **Using a dedicated web server**: Configure a web server like Nginx or Apache to serve the static files from the `STATIC_ROOT` directory. In a traditional deployment scenario, the web server fields requests to your site first, and serves static files directly, passing only application requests to Django.
+2. **Using object storage services**: If you can't or don't want to use a dedicated web server, use services like Amazon S3, Google Cloud Storage, or Azure Blob Storage to host your static files. This approach is scalable and offloads the serving of static files from your web server. This pattern is commonly used to manage and serve *media* files, so repeating the pattern for static files is straightforward. The [`django-storages`](https://django-storages.readthedocs.io/en/latest/) package provides storage backends for these services, making it easy to integrate them with Django's `staticfiles` app.
+3. **Using WhiteNoise**: [WhiteNoise](https://whitenoise.readthedocs.io/en/stable/django.html) is a popular third-party package that allows Django to serve static files directly in production. While not as efficient as using a dedicated web server or object storage, it can be a simpler solution for smaller applications or when deploying to platforms that don't support custom web server configurations.
+
+## Storage backends and CDNs
+When serving static files in production, it's important to consider caching and versioning. Regardless of which method you choose to serve static files, you should always use a CDN (Content Delivery Network). A CDN offloads the delivery of static files to edge locations closer to your users, improving load times and reducing latency for them, and reducing the load on your origin server.
+
+Even if you don't use a CDN (you really should), browsers cache static files to improve performance, and this can lead to issues when you update your static files, so you still have to deal with caching implications. If a browser has cached an old version of a file, it may not fetch the updated version, leading to inconsistencies in your application's appearance or functionality.
+
+To address this, Django provides "manifest" storage backends that append a hash of the file's contents to its filename. This ensures that when a static file is updated, its filename changes, prompting browsers to fetch the new version. As a result, you can set long cache expiration times for your static files without worrying about users receiving stale content.
+
+### How manifest storage backends work
+When your run `collectstatic` command with a manifest storage backend, after collecting all the static files, the `collectstatic` command calls the `post_process` method of the storage backend. This method processes each static file, computes a hash of its contents, and saves a new copy of the file to include this hash in its filename (e.g., `style.css` might become `style.abc123.css`). It's important to note that the original files are retained, not replaced; the hashed versions are additional copies.
+
+As part of this process, Django scans the contents of the static files for references to other static files (e.g., in CSS files referencing images or fonts) and updates those references to point to the new hashed filenames. This ensures that all internal references within your static files remain consistent.
+
+Finally, Django generates a manifest file that maps the original filenames to their hashed versions. This manifest is used to look up the correct filename when you reference static files in your templates using the `{% static %}` template tag.
+
+### The manifest "gotcha" with rolling deployments
+There's a hidden challenge when using manifest storage backends in production, specifically in environments with rolling deployments, where multiple versions of your application may be running simultaneously. Each version of your application has its own set of static files with different hashes. The catch is, the manifest file itself is not hashed or versioned by default; it always has the same name (`staticfiles.json`). This can lead to bugs, because after you run `collectstatic` for a new deployment, the manifest file will be updated to reflect the new static files, but older versions of your application may still be running and expecting the old manifest file. This can lead to serving static files that don't match the templates referencing them, or even 500 errors if the manifest file is missing entries for the older version's static files.
+
+To solve this problem, you can create a custom manifest storage backend that stores the manifest file in a subdirectory named after a unique release identifier (e.g., a Git commit hash or a timestamp). This way, each deployment has its own manifest file, and older versions of your application can still access their corresponding static files without conflict. The example code above demonstrates how to implement such a custom storage backend for both S3 and local filesystem storage backends.
+
+## Conclusion
+Managing static files in Django for production can be complex, but with the right tools and practices, it can be made straightforward. By leveraging Django's `staticfiles` app, using appropriate storage backends, and implementing caching strategies with CDNs, you can ensure that your static files are served efficiently and reliably in a production environment.
