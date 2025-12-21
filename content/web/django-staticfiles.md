@@ -1,12 +1,13 @@
 ---
-draft: true
-title: "Mastering Django Static Files for Production"
-linkTitle: "Django Static Files"
+title: Mastering Django Static Files for Production
+linkTitle: Django Static Files
 dateCreated: 2025-11-15T09:39:11-05:00
 date: 2025-11-15T09:39:11-05:00
 tags: []
-description: ""
+description: Learn how to handle Django static files in production using staticfiles, S3, CDNs, and manifest storage—plus solutions for rolling deployment pitfalls.
 type: article
+params:
+  cover: img/magic-pony-django.webp
 ---
 
 One of the most challenging aspects of deploying Django applications to production is managing static files effectively. In this article, we will explore how to handle static files in Django using the built-in `staticfiles` app, third-party storage backends from `django-storages`, and best practices for serving static files in a production environment.<!--more-->
@@ -22,186 +23,11 @@ Although they can be handled similarly, in this article, we will focus on static
 ## TL;DR Configuring static files correctly in production
 For a working example project with code you can crib from, see the [Django staticfiles example repository](https://github.com/veselosky/django-staticfiles-example).
 
-### Using S3-compatible object storage for static files (recommended)
-```python
-# myproject/settings.py
-from os import environ
-INSTALLED_APPS += [
-    'django.contrib.staticfiles',
-]
-# Local directories to READ static files from. May include project-level unprocessed
-# static files, and the output directory of your front-end build pipeline.
-STATICFILES_DIRS = [BASE_DIR / "static", BASE_DIR / "frontend" / "dist"]
-# STATIC_ROOT is not used with S3 storage backends. Files are collected directly to S3.
-# Use django-storages to configure a cloud storage backend for static files
-AWS_S3_ACCESS_KEY_ID = environ["AWS_S3_ACCESS_KEY_ID"]
-AWS_S3_SECRET_ACCESS_KEY = environ["AWS_S3_SECRET_ACCESS_KEY"]
-AWS_STORAGE_BUCKET_NAME = environ["AWS_STORAGE_BUCKET_NAME"]
-# Set custom domain if using a CDN (recommended). Must NOT end in slash!
-# Example: "cdn.example.com"
-CUSTOM_DOMAIN = os.environ.get("AWS_S3_CUSTOM_DOMAIN", None)
-# Custom: name a function that returns the unique release ID for your project
-RELEASE_ID_STRATEGY = "myproject.storage.git_hash_release_id"
-# In this example, we use the same bucket for both static and media files, but
-# separate them by prefixing with different "locations". You could also use
-# separate buckets if you prefer.
-STORAGES = {
-    # Default file storage for user-uploaded MEDIA files
-    "default": {
-        "BACKEND": "storages.backends.s3.S3Storage",
-        "OPTIONS": {
-            "access_key": AWS_S3_ACCESS_KEY_ID,
-            "secret_key": AWS_S3_SECRET_ACCESS_KEY,
-            "bucket_name": AWS_STORAGE_BUCKET_NAME,
-            "custom_domain": CUSTOM_DOMAIN,
-            "location": "media",
-        },
-    },
-    # Static file storage for collected STATIC files
-    "staticfiles": {
-        "BACKEND": "myproject.storage.ReleaseSpecificManifestS3Storage",
-        "OPTIONS": {
-            "access_key": AWS_S3_ACCESS_KEY_ID,
-            "secret_key": AWS_S3_SECRET_ACCESS_KEY,
-            "bucket_name": AWS_STORAGE_BUCKET_NAME,
-            "custom_domain": CUSTOM_DOMAIN,
-            "location": "static",
-            "release_id_strategy": RELEASE_ID_STRATEGY,
-        },
-    },
-}
-# STATIC_URL MUST end in a slash!
-if CUSTOM_DOMAIN:
-    STATIC_URL = f"https://{CUSTOM_DOMAIN}/static/"
-else:
-    STATIC_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/"
-```
+For scalable deployments, use a dedicated object storage service (like Amazon S3, Google Cloud Storage, or Azure Blob Storage) to host your static files. Use the `django-storages` package to integrate with these services. Use a custom storage backend that creates a release-specific subdirectory for static files to avoid manifest conflicts during rolling deployments. [Example configuration.](https://github.com/veselosky/django-staticfiles-example/blob/master/example/settings_s3.py)
 
-```python
-# myproject/storage.py
-import os.path
-from django.conf import settings
-from django.core.exceptions import ImproperlyConfigured
-from django.utils.module_loading import import_string
-from storages.backends.s3 import S3StaticStorage, S3ManifestStaticStorage
+For single-server deployments, use a custom storage backend that creates a release-specific subdirectory for static files to avoid manifest conflicts during rolling deployments. [Example configuration.](https://github.com/veselosky/django-staticfiles-example/blob/master/example/settings_custom.py)
 
-
-def git_hash_release_id():
-    """Example release ID strategy that returns the current Git commit hash."""
-    import subprocess
-    try:
-        git_hash = subprocess.check_output(
-            ["git", "rev-parse", "--short", "HEAD"],
-            cwd=settings.BASE_DIR,
-        ).strip().decode("utf-8")
-        return git_hash
-    except Exception:
-        return "unknown-release"
-
-
-class ReleaseSpecificManifestS3Storage(S3ManifestStaticStorage):
-    def __init__(self, *args, **kwargs):
-        # Determine the release ID to use for the manifest file location.
-        msg = (
-            "release_id_strategy or release_id is required"
-            " for ReleaseSpecificManifestS3Storage"
-        )
-        release_id = kwargs.pop("release_id", None)
-        release_id_strategy_path = kwargs.pop("release_id_strategy", None)
-        if not release_id:
-            if not release_id_strategy_path:
-                raise ImproperlyConfigured(msg)
-            release_id_strategy = import_string(release_id_strategy_path)
-            release_id = release_id_strategy()
-
-        # Set up manifest storage to use a subdirectory named by the release ID
-        # otherwise using all the same S3 settings as the main storage.
-        opts = kwargs.copy() # copy to avoid modifying original
-        opts["location"] = os.path.join(kwargs.get("location", ""), release_id)
-        manifest_storage = S3StaticStorage(**opts)
-        super().__init__(*args, manifest_storage=manifest_storage, **kwargs)
-```
-
-### Using local filesystem for static files
-```python
-INSTALLED_APPS += [
-    'django.contrib.staticfiles',
-]
-# Local directories to READ static files from. May include project-level unprocessed
-# static files, and the output directory of your front-end build pipeline.
-STATICFILES_DIRS = [BASE_DIR / "static", BASE_DIR / "frontend" / "dist"]
-
-# The disk location where collected static files will be placed. Your web
-# server will serve files from this directory. Note this is NOT where your
-# project-level static files should be stored. This directory should be empty
-# before running `collectstatic` the first time.
-STATIC_ROOT="/var/www/example.com/static/"
-# The disk location where user-uploaded MEDIA files are stored. This example
-# uses a local directory, but in production you should use a cloud storage backend,
-# even for single-server setups.
-MEDIA_ROOT="/var/www/example.com/media/"
-# Custom: name a function that returns the unique release ID for your project
-RELEASE_ID_STRATEGY = "myproject.storage.git_hash_release_id"
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "myproject.storage.ReleaseSpecificManifestStaticFilesStorage",
-        "OPTIONS": {
-            # If RELEASE_ID is in an environment variable, pass it directly.
-            # "release_id": environ["RELEASE_ID"],
-            "release_id_strategy": RELEASE_ID_STRATEGY,
-        },
-    },
-}
-# STATIC_URL MUST end in a slash! This may vary based on your web server config,
-# but /static/ is typical.
-STATIC_URL = '/static/'
-```
-
-```python
-# myproject/storage.py
-import os.path
-from django.conf import settings
-from django.contrib.staticfiles.storage import StaticFilesStorage, \
-    ManifestStaticFilesStorage
-from django.core.exceptions import ImproperlyConfigured
-from django.utils.module_loading import import_string
-
-def git_hash_release_id():
-    """Example release ID strategy that returns the current Git commit hash."""
-    import subprocess
-    try:
-        git_hash = subprocess.check_output(
-            ["git", "rev-parse", "--short", "HEAD"],
-            cwd=settings.BASE_DIR,
-        ).strip().decode("utf-8")
-        return git_hash
-    except Exception:
-        return "unknown-release"
-
-class ReleaseSpecificManifestStaticFilesStorage(ManifestStaticFilesStorage):
-    def __init__(self, *args, **kwargs):
-        # Determine the release ID to use for the manifest file location.
-        msg = (
-            "release_id_strategy or release_id is required"
-            " for ReleaseSpecificManifestStaticFilesStorage"
-        )
-        release_id = kwargs.pop("release_id", None)
-        release_id_strategy_path = kwargs.pop("release_id_strategy", None)
-        if not release_id:
-            if not release_id_strategy_path:
-                raise ImproperlyConfigured(msg)
-            release_id_strategy = import_string(release_id_strategy_path)
-            release_id = release_id_strategy()
-
-        # Set up manifest storage to use a subdirectory named by the release ID
-        manifest_storage = StaticFilesStorage(
-            location=os.path.join(self.location, release_id)
-        )
-        super().__init__(*args, manifest_storage=manifest_storage, **kwargs)
-```
+[Example custom storage backends that create release-specific subdirectories.](https://github.com/veselosky/django-staticfiles-example/blob/master/example/storages.py)
 
 ## Django's staticfiles app
 
