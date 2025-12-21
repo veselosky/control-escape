@@ -2,7 +2,8 @@
 title: Mastering Django Static Files for Production
 linkTitle: Django Static Files
 dateCreated: 2025-11-15T09:39:11-05:00
-date: 2025-11-15T09:39:11-05:00
+datePublished: 2025-12-21T12:15:00-05:00
+date: 2025-12-21T12:15:00-05:00
 tags: []
 description: Learn how to handle Django static files in production using staticfiles, S3, CDNs, and manifest storage—plus solutions for rolling deployment pitfalls.
 type: article
