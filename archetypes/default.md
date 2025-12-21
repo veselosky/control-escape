@@ -1,8 +1,9 @@
 ---
+draft: true
 title: "{{ replace .File.ContentBaseName "-" " " | title }}"
+dateCreated: {{ .Date }}
 date: {{ .Date }}
 tags: []
-featured_image: ""
 description: ""
 type: article
 ---
