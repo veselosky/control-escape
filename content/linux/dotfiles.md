@@ -8,49 +8,52 @@ description: ""
 type: article
 ---
 
+## What are dotfiles?
+“Dotfiles” are configuration files for your user environment, typically stored in your home directory (`~`). They often start with a dot (`.`) to make them hidden by default in file listings. Examples include `.bashrc`, `.zshrc`, `.gitconfig`, and directories like `.config/`.
+
+## Why manage dotfiles with git?
+Using git to manage your dotfiles allows you to:
+* Version control: track changes over time and revert if needed.
+* Synchronization: easily sync your configuration across multiple machines.
+* Backup: have a remote copy of your configurations.
 
 Best practice is: **keep your dotfiles in a normal repo directory (not `~`) and *deploy* them into `~` via symlinks (or a tool that does the same thing).** That cleanly solves every issue you listed.
 
-## The common, solid patterns
+## Two common patterns for managing dotfiles with git
 
-### 1) “Bare repo” in `~` (popular, elegant)
-
-You store the git metadata somewhere *not* in `~`, but tell git that the *working tree* is `~`.
+### 1) “Bare repo” in `~`
+This method uses some less-known git features to achieve a clean setup. You store the git metadata somewhere *not* in `~`, but tell git that the *working tree* is `~`.
 
 * Repo data: `~/.dotfiles/` (contains the git dir)
 * Working tree: `~`
-* Result: files live in `~` like normal, but `~/.git` does **not** exist.
+* Result: files live in `~` like normal, but `~/.git` does **not** exist (in your home directory).
 
 Typical setup:
 
 ```bash
+# First, you clone your repo "bare", i.e. without a working tree
 git clone --bare <repo-url> ~/.dotfiles
+# Then, define a convenient alias to work with your dotfiles
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+# Now, checkout your files into your home directory. This will probably
+# fail the first time if you have conflicting files; move/backup them once.
 dot checkout
+# Hide untracked files so `dot status` doesn't list literally everything in your home
 dot config --local status.showUntrackedFiles no
 ```
 
-**Why it solves your bullets**
+**Pros and cons**
 
-* You’re not “checking out a repo into `~/.`” in the messy way: there’s no `~/.git`.
-* Repo-only files (`.git`, `.gitignore`, etc.) don’t end up in `~`.
-* You can version real dotfiles at their real paths (`~/.bashrc`, `~/.config/...`).
+* Pro: Repo-only files (`.git`, `.gitignore`, etc.) don’t end up in `~`.
+* Pro?: You can version real dotfiles at their real paths (`~/.bashrc`, `~/.config/...`). No symlinks needed.
+* Con: First checkout probably fails because of preexisting files (e.g. there's already a default `.bashrc`); you have to move or remove them.
+* Con: Initial setup requires remembering some unusual commands.
+* Con: You can't track files that you don't want in `~` (like a setup script or README in the repo root) without extra workarounds.
 
-**Gotcha:** first checkout may fail if you already have conflicting files; you move/backup them once.
+### 2) Standard repo checkout + symlink manager
+Using this method, you keep your dotfiles in a normal git repo directory (e.g., `~/src/dotfiles`) and use a tool to create symlinks from that repo into your home directory. Typically, **GNU Stow** is used for this, but there are other good tools like **chezmoi** and **yadm**.
 
----
-
-### 2) “Repo somewhere + symlink manager” (most explicit, easiest to reason about)
-
-You keep dotfiles in `~/src/dotfiles` (or similar) and use a tool to link them into place.
-
-Tools that are effectively best-practice in this category:
-
-* **GNU Stow** (classic, simple)
-* **chezmoi** (more features: templates, secrets, per-machine config)
-* **yadm** (dotfile-focused git wrapper; similar vibe to bare repo)
-
-**Layout example (Stow style):**
+**Repo layout example (Stow style):**
 
 ```
 dotfiles/
@@ -71,27 +74,15 @@ cd ~/src/dotfiles
 stow git zsh nvim
 ```
 
-**Why it solves your bullets**
+Or better yet, keep a `setup.sh` script in the repo that does it for you.
 
-* Repo is not in `~`, so `.git` and repo admin files stay contained.
-* Your real dotfile locations are created via symlinks into `~` / `~/.config`.
-* You can have multiple “packages” and only link what you want per machine.
+**Pros and cons**
 
----
-
-## What to do about “repo dotfiles” like `.gitignore`
-
-Two approaches depending on the pattern:
-
-* **Bare repo pattern:** you generally don’t need a `.gitignore` in `~` at all. Instead, keep ignores inside git config (recommended):
-
-  ```bash
-  dot config --local status.showUntrackedFiles no
-  ```
-
-  And if you want ignore rules for *your tools*, put them in the right place (e.g., global gitignore at `~/.config/git/ignore` and set `core.excludesFile`).
-
-* **Symlink-manager pattern:** `.gitignore` lives in the repo root (normal) and never gets linked into `~`, because you only stow/link the files that represent dotfiles.
+* Pro: Repo-only files (`.git`, `.gitignore`, etc.) don’t end up in `~`.
+* Pro: Initial setup is straightforward and can be easily scripted and documented in-repo.
+* Pro: You can have multiple “packages” and only link what you want per machine.
+* Con?: Your real dotfile locations are created via symlinks in `~` / `~/.config`.
+* Con: Requires an extra tool to manage symlinks (could be problematic if you can’t install software easily).
 
 ---
 
