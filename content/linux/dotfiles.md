@@ -1,23 +1,31 @@
 ---
-draft: true
-title: "Dot files"
+title: How to Manage Dotfiles With Git (Best Practices Explained)
 dateCreated: 2026-01-08T20:11:08-05:00
-date: 2026-01-08T20:11:08-05:00
+datePublished: 2026-01-11T14:14:45-05:00
+date: 2026-01-11T14:14:45-05:00
 tags: []
-description: ""
+description: What dotfiles are, why Linux users manage them with Git, and the two most common patterns for keeping configs synced and backed up.
 type: article
+params:
+  cover: img/blue-train-platform.webp
 ---
 
-## What are dotfiles?
+## What are dotfiles and why manage them with git?
 “Dotfiles” are configuration files for your user environment, typically stored in your home directory (`~`). They often start with a dot (`.`) to make them hidden by default in file listings. Examples include `.bashrc`, `.zshrc`, `.gitconfig`, and directories like `.config/`.
 
-## Why manage dotfiles with git?
-Using git to manage your dotfiles allows you to:
+These files control the behavior of your shell, text editors, version control systems, and other applications. Because they define your working environment, having a consistent set of dotfiles across multiple machines can greatly enhance productivity.
+
+Using git to manage your dotfiles has several benefits:
 * Version control: track changes over time and revert if needed.
 * Synchronization: easily sync your configuration across multiple machines.
 * Backup: have a remote copy of your configurations.
 
-Best practice is: **keep your dotfiles in a normal repo directory (not `~`) and *deploy* them into `~` via symlinks (or a tool that does the same thing).** That cleanly solves every issue you listed.
+But managing dotfiles with git can be tricky because:
+* Most dotfiles want to live directly in your home directory (`~`).
+* You want to keep your home directory clean (no `.git` folder there).
+* You *don't* want to store your *entire* home directory in git!
+
+There are two common patterns to solve these challenges. We'll explore both below.
 
 ## Two common patterns for managing dotfiles with git
 
@@ -46,12 +54,11 @@ dot config --local status.showUntrackedFiles no
 
 * Pro: Repo-only files (`.git`, `.gitignore`, etc.) don’t end up in `~`.
 * Pro?: You can version real dotfiles at their real paths (`~/.bashrc`, `~/.config/...`). No symlinks needed.
-* Con: First checkout probably fails because of preexisting files (e.g. there's already a default `.bashrc`); you have to move or remove them.
 * Con: Initial setup requires remembering some unusual commands.
 * Con: You can't track files that you don't want in `~` (like a setup script or README in the repo root) without extra workarounds.
 
 ### 2) Standard repo checkout + symlink manager
-Using this method, you keep your dotfiles in a normal git repo directory (e.g., `~/src/dotfiles`) and use a tool to create symlinks from that repo into your home directory. Typically, **GNU Stow** is used for this, but there are other good tools like **chezmoi** and **yadm**.
+Using this method, you keep your dotfiles in a normal git repo directory (e.g., `~/dotfiles`) and use a tool to create symlinks from that repo into your home directory. Typically, **GNU Stow** is used for this, but there are other good tools like **chezmoi** and **yadm**.
 
 **Repo layout example (Stow style):**
 
@@ -81,23 +88,13 @@ Or better yet, keep a `setup.sh` script in the repo that does it for you.
 * Pro: Repo-only files (`.git`, `.gitignore`, etc.) don’t end up in `~`.
 * Pro: Initial setup is straightforward and can be easily scripted and documented in-repo.
 * Pro: You can have multiple “packages” and only link what you want per machine.
-* Con?: Your real dotfile locations are created via symlinks in `~` / `~/.config`.
+* Con?: Your real dotfile locations are created via symlinks in `~`.
 * Con: Requires an extra tool to manage symlinks (could be problematic if you can’t install software easily).
 
----
+## Which way is "best"?
 
-## Practical “best practice” guidance
+Both methods are valid and widely used. The choice depends on your preferences:
+* If you want a minimal setup without symlinks and don't mind the initial complexity, go with the bare repo method.
+* If you prefer simplicity, flexibility, and easier management of multiple configurations, use the standard repo + symlink manager approach.
 
-* Prefer dotfiles under **XDG paths** where possible: `~/.config`, `~/.local/share`, `~/.cache`.
-* Split by app/module, not “one giant blob.”
-* Add a bootstrap script (`./install.sh` or `./bootstrap`) that:
-
-  * installs dependencies (optional)
-  * links files (stow/chezmoi/etc.)
-  * sets safe defaults
-* Handle machine-specific differences via:
-
-  * separate “profiles”/packages, or
-  * templating (chezmoi), or
-  * conditional includes (`~/.gitconfig` includes, shell `source` patterns)
-* Never commit secrets; use an encrypted store (chezmoi supports this well) or external secret manager.
+Personally, I use the second method with GNU Stow. This makes it easier for me to set up new machines: fewer commands to remember, and I can keep setup scripts and documentation in the same repo without issues.
