@@ -8,9 +8,12 @@ params:
   author: "Vince Veselosky"
   copyright: "© 2011 Vince Veselosky"
   contact: "<vince@control-escape.com>"
+aliases:
+  - /linux/lx-postinstall.html
+  - /lx-reading.html
 ---
 
-If you're coming to Linux from Windows and don't want to slog through volumes of 
+If you're coming to Linux from Windows and don't want to slog through volumes of
 references and tutorials, this primer will get you started in just a short time.
 We'll cover:
 

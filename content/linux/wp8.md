@@ -11,6 +11,8 @@ params:
   contact: "<vince@control-escape.com>"
   orphan: "True"
   outdated: true
+aliases:
+  - /wp8.html
 ---
 
 > [!WARNING]

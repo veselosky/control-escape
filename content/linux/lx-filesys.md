@@ -7,6 +7,8 @@ params:
   author: "Vince Veselosky"
   copyright: "© 2011 Vince Veselosky"
   contact: "<vince@control-escape.com>"
+aliases:
+  - /lx-filesys.html
 ---
 
 Probably the most important difference (from the user\'s perspective) between the

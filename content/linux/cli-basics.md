@@ -9,6 +9,8 @@ params:
   author: "Vince Veselosky"
   copyright: "2011 Vince Veselosky."
   contact: "<vince@control-escape.com>"
+aliases:
+   - /linux/lx-basics.html
 ---
 
 ## What is this \"shell\"?
