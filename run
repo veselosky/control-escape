@@ -33,6 +33,12 @@ MAGENTA="$(tput setaf 5)"
 CYAN="$(tput setaf 6)"
 WHITE="$(tput setaf 7)"
 
+# Setup: ensure DATA_DIR exists and contains a .gitignore excluding all files.
+mkdir -p "$DATA_DIR"
+if [ ! -f "$DATA_DIR/.gitignore" ]; then
+    echo "*" > "$DATA_DIR/.gitignore"
+fi
+
 #######################################################################
 # Function declarations
 #######################################################################
@@ -49,6 +55,7 @@ function audit { ## Run code quality checks
     HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=true \
     HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS=true \
     hugo > "$BUILD_OUT" 2> "$BUILD_ERR" \
+    --cleanDestinationDir \
     --printI18nWarnings \
     --printPathWarnings \
     --printUnusedTemplates \
@@ -58,7 +65,7 @@ function audit { ## Run code quality checks
 
     # Search the generated public/ for known Hugo build warnings/markers.
     # Capture output (if any), print it, and save to a file when issues exist.
-    issues=$(grep -inorE "<!-- raw HTML omitted -->|ZgotmplZ|\[i18n\]|\(<nil>\)|(&lt;nil&gt;)|hahahugo" public/ || true)
+    issues=$(grep -inorE "<!-- raw HTML omitted -->|ZgotmplZ|\[i18n\]|\(<nil>\)|(&lt;nil&gt;)|hahahugo" "$BASE_DIR/public/" || true)
 
     if [ -z "${issues}" ]; then
         # No grep output -> success
@@ -79,23 +86,12 @@ function build { ## Build the static site (to public/)
     # Note: Django also uses /var/www/ for static files and media.
     # Building separately seems safer for now.
     hugo build --minify --cleanDestinationDir --gc --environment production
-    npx pagefind --site public/
+    npx pagefind --site "$BASE_DIR/public/"
 }
 
 #######################################################################
-function deploy { ## Deploy the site to the production server
-    # Check the ownership of the var/www/ directory. If owner is not
-    # the current user, use sudo to copy files as the owner.
-    TARGET="$BASE_DIR/var/www/"
-    # Portable way to get directory owner (works on GNU and BSD/macOS)
-    OWNER=$(ls -ld "$TARGET" | awk '{print $3}')
-    if [ "$OWNER" == "$USER" ]; then
-        echo "Deploying site to $TARGET as $USER"
-        cp -r public/* $TARGET
-    else
-        echo "Deploying site with sudo as $OWNER owns $TARGET"
-        sudo -u "$OWNER" cp -r public/* $TARGET
-    fi
+function deploy { ## Deploy the site to production (Cloudflare)
+    build && npx wrangler deploy
 }
 #######################################################################
 function help { ## Display usage for this application
@@ -116,17 +112,81 @@ function help { ## Display usage for this application
 
 #######################################################################
 function lighthouse { ## Audit the site for accessibility, SEO, performance, and best practices
-    # If lighthouse executable is on the path, use it, otherwise check if npx is available
+    # Ensure a Hugo dev server is running on localhost:1313, run Lighthouse, then stop the server if we started it.
     REPORT="$BASE_DIR/var/lighthouse-report.html"
-    if command -v lighthouse &> /dev/null; then
-        lighthouse http://localhost:1313 --output html --output-path "$REPORT" --chrome-flags="--headless"
-    elif command -v npx &> /dev/null; then
-        npx lighthouse http://localhost:1313 --output html --output-path "$REPORT" --chrome-flags="--headless"
+    HUGO_URL="http://127.0.0.1:1313"
+    SERVER_STARTED_BY_SCRIPT=0
+
+    # Start Hugo server if nothing is listening on :1313
+    if command -v curl >/dev/null 2>&1; then
+        if curl -sSf "$HUGO_URL" >/dev/null 2>&1; then
+            echo "Using existing Hugo server at $HUGO_URL"
+        else
+            echo "Starting Hugo server..."
+            hugo server -DF --bind 127.0.0.1 --port 1313 --disableLiveReload >/dev/null 2>&1 &
+            HUGO_PID=$!
+            SERVER_STARTED_BY_SCRIPT=1
+            trap 'kill "$HUGO_PID" 2>/dev/null || true; wait "$HUGO_PID" 2>/dev/null || true' EXIT
+
+            # Wait up to 30s for the server to become responsive
+            timeout=30
+            waited=0
+            until curl -sSf "$HUGO_URL" >/dev/null 2>&1; do
+                sleep 1
+                waited=$((waited+1))
+                if [ $waited -ge $timeout ]; then
+                    echo "Error: Hugo server did not start within ${timeout}s"
+                    kill "$HUGO_PID" 2>/dev/null || true
+                    wait "$HUGO_PID" 2>/dev/null || true
+                    return 1
+                fi
+            done
+        fi
     else
-        echo "Error: lighthouse or npx is not installed."
+        # No curl available: attempt to start server and wait briefly
+        echo "Warning: 'curl' not found; starting Hugo server and waiting 3s..."
+        hugo server -DF --bind 127.0.0.1 --port 1313 --disableLiveReload >/dev/null 2>&1 &
+        HUGO_PID=$!
+        SERVER_STARTED_BY_SCRIPT=1
+        trap 'kill "$HUGO_PID" 2>/dev/null || true; wait "$HUGO_PID" 2>/dev/null || true' EXIT
+        sleep 3
+    fi
+
+    # Select lighthouse command
+    if command -v npx >/dev/null 2>&1; then
+        CMD=(npx lighthouse "$HUGO_URL" --output html --output-path "$REPORT" --chrome-flags="--headless --no-sandbox")
+    else
+        echo "Error: npx is not installed."
+        if [ "$SERVER_STARTED_BY_SCRIPT" -eq 1 ]; then
+            kill "$HUGO_PID" 2>/dev/null || true
+            wait "$HUGO_PID" 2>/dev/null || true
+        fi
         exit 1
     fi
+
+    # Run Lighthouse
+    rc=0
+    "${CMD[@]}" || rc=$?
     echo "Lighthouse report generated at $REPORT"
+
+    # If we started the server, stop it now and clear the EXIT trap
+    if [ "$SERVER_STARTED_BY_SCRIPT" -eq 1 ]; then
+        echo "Stopping Hugo server (pid $HUGO_PID)..."
+        kill "$HUGO_PID" 2>/dev/null || true
+        wait "$HUGO_PID" 2>/dev/null || true
+        trap - EXIT
+    fi
+
+    return $rc
+}
+
+#######################################################################
+function serve { ## Run the Hugo development server with drafts and future content
+    build
+    hugo server -DF
+}
+function server { ## Alias for serve
+    serve
 }
 
 #######################################################################
