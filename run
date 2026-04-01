@@ -183,7 +183,7 @@ function lighthouse { ## Audit the site for accessibility, SEO, performance, and
 #######################################################################
 function serve { ## Run the Hugo development server with drafts and future content
     build
-    hugo server -DF
+    hugo server
 }
 function server { ## Alias for serve
     serve
