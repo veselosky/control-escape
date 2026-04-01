@@ -34,6 +34,7 @@ Every element in HTML communicates intent: `<header>`, `footer`, `main`, and `<n
 HTML isn’t just `<div>` and `<span>`. Here are three critical areas of HTML you need to master:
 
 **Landmarks**
+
 Landmarks help search engines, assistive technologies, and other tools understand web pages.
 
 * Put your main page content in `<main>`!
@@ -41,6 +42,7 @@ Landmarks help search engines, assistive technologies, and other tools understan
 * Learn to use `<aside>` and `<section>` for in-page navigation.
 
 **Forms**
+
 Stop building your own form elements in JavaScript frameworks!
 
 * `<input>` comes with types like `email`, `search`, `tel` for telephone numbers, `URL`, `number`. Mobile platforms select keyboards according to input type — user experience WIN!
@@ -48,6 +50,7 @@ Stop building your own form elements in JavaScript frameworks!
 * Bonus: use `<datalist>` for autocomplete in text inputs.
 
 **Easy Performance Wins**
+
 * `async` and `defer` attributes prevent scripts from blocking page render.
 * Images can have `loading="lazy"` for the same reason.
 * `<link rel="preload">` ensures important assets load early (but don't overuse it!)
