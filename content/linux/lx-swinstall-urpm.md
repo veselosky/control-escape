@@ -2,8 +2,6 @@
 type: article
 title: "Managing Software with urpm"
 date: "2011-06-03T22:52:22-0400"
-tags:
-  - outdated
 params:
   contact: "<vince@control-escape.com>"
   outdated: true

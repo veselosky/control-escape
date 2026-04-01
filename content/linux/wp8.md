@@ -3,8 +3,6 @@ type: article
 title: "Introducing WordPerfect 8 for Linux"
 description: "How to obtain, install and use Corel WordPerfect 8 for Linux"
 date: "2011-06-04T23:16:21-0400"
-tags:
-  - outdated
 params:
   author: "Vince Veselosky"
   copyright: "© 2011 Vince Veselosky"

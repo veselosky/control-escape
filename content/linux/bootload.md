@@ -2,8 +2,6 @@
 type: article
 title: "Choosing a Boot Loader"
 date: "2011-06-04T21:57:51-0400"
-tags:
-  - outdated
 params:
   author: "Vince Veselosky"
   copyright: "© 2011 Vince Veselosky"
