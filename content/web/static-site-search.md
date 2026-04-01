@@ -10,6 +10,7 @@ description: Learn how to implement efficient site search on static sites using 
 type: article
 params:
     cover: img/search.webp
+    featured: true
 ---
 
 In 2025 I relaunched Control-Escape as a statically generated site built with [Hugo](https://gohugo.io). While pre-generated sites have many advantages, one of the drawbacks has traditionally been the difficulty of implementing a site search tool.

@@ -7,6 +7,7 @@ description: Master web development with these essential skills for building rob
 type: article
 params:
     cover: img/making-websites.webp
+    featured: true
 ---
 
 The web isn’t magic. It runs on a handful of simple, powerful ideas that every developer should understand — but too many skip them, trusting frameworks and libraries to handle the details.
