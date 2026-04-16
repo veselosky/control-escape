@@ -9,6 +9,7 @@ description: Learn how to handle Django static files in production using staticf
 type: article
 params:
   cover: img/magic-pony-django.webp
+  featured: true
 ---
 
 One of the most challenging aspects of deploying Django applications to production is managing static files effectively. In this article, we will explore how to handle static files in Django using the built-in `staticfiles` app, third-party storage backends from `django-storages`, and best practices for serving static files in a production environment.<!--more-->
