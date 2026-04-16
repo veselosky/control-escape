@@ -2,7 +2,7 @@ baseURL: "https://www.control-escape.com"
 copyright: "Copyright © 2025 Vince Veselosky. All rights reserved."
 languageCode: "en-us"
 # themesDir: "../hugo/themes"
-theme: "common"
+theme: "github.com/veselosky/neoclassical"
 timeZone: "America/New_York"
 title: "Control-Escape"
 
@@ -27,11 +27,35 @@ params:
   cover: img/blue-train-platform.webp
   favicon: ""
   site_logo: ""
-  tagline: "Control Your Digital Life; Escape Vendor Lock-in."
+  subtitle: "Control Your Digital Life; Escape Vendor Lock-in."
   description: "Take control of your tech: free software, automation, self-hosting, and more."
   # This is the title of the section that will be displayed on the home page. Set manually,
   # otherwise the default is the first section in the list above.
   recent_copy: "Recent Articles"
+  usePagefind: true
+  darkmode:
+    enabled: true
+  sidebar:
+    enabled: true
+    modules:
+      - name: search
+        enabled: true
+      - name: social
+        enabled: true
+      - name: recent
+        enabled: true
+      - name: featured
+        enabled: true
+      - name: tagcloud
+        enabled: true
+      - name: archive
+        enabled: true
+      - name: blogroll
+        enabled: true
+  social:
+    linkedin: veselosky
+    github: veselosky
+    rss: /index.xml
   render_hooks:
     link:
       errorLevel: "warning" # ignore (default), warning, or error (fails the build)
