@@ -11,6 +11,7 @@ published: 2009-05-03T18:30:45-0400
 keywords: []
 tags: [perl]
 summary: In which our hero counts off the list of inspirations and irritations encountered while blogging with Movable Type.
+type: article
 outdated: true
 ---
 
